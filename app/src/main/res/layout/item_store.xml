@@ -21,7 +21,7 @@
             android:padding="16dp">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/mImage"
                 android:layout_width="400px"
                 android:layout_height="400px"
                 android:gravity="center"
@@ -38,7 +38,7 @@
 
                 <TextView
 
-                    android:id="@+id/title"
+                    android:id="@+id/mTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="2"
@@ -49,14 +49,14 @@
                     />
 
                 <TextView
-                    android:id="@+id/seller"
+                    android:id="@+id/mSeller"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorgrey4"
                     android:textSize="12sp"/>
 
                 <TextView
-                    android:id="@+id/price"
+                    android:id="@+id/mPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"

@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import victorcruz.dms.product.Product;
+import victorcruz.dms.data.Product;
 import victorcruz.dms.product.ProductHandler;
 
 public class GetJSON extends AsyncTask<String, Void, String> {
@@ -23,6 +23,7 @@ public class GetJSON extends AsyncTask<String, Void, String> {
     public GetJSON(ProductHandler productHandler){
         this.productHandler = productHandler;
     }
+
 
     @Override
     protected String doInBackground(String... params) {

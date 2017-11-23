@@ -11,6 +11,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import victorcruz.dms.R;
+import victorcruz.dms.data.Product;
 
 
 public class ProductCartAdapter extends BaseAdapter {

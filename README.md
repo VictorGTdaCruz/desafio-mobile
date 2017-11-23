@@ -9,7 +9,7 @@ O candidato deve dar **fork** neste repositório e após o termino do desenvolvi
 Para obter os itens da loja, sua aplicação deverá realizar uma chamada `GET` na URL https://raw.githubusercontent.com/stone-pagamentos/desafio-mobile/master/products.json
 
 A lista de itens deve exibir as seguintes informações:
-+ Nome [title]
++ Nome [mTitle]
 + Preço [value]
 + Vendedor [cardNumber]
 + Foto do item [thumbnailHd]

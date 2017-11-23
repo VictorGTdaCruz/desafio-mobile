@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import victorcruz.dms.R;
 import victorcruz.dms.UI.ExpandableHeightListView;
+import victorcruz.dms.data.Product;
 
 
 public class ProductHandler {
