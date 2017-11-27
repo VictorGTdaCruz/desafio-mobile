@@ -21,11 +21,11 @@
             android:padding="16dp">
 
             <ImageView
-                android:id="@+id/mImage"
+                android:id="@+id/image"
                 android:layout_width="400px"
                 android:layout_height="400px"
                 android:gravity="center"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/ic_launcher" />
 
 
             <LinearLayout
@@ -38,31 +38,30 @@
 
                 <TextView
 
-                    android:id="@+id/mTitle"
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="2"
                     android:textColor="@color/colorblue"
 
 
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/mSeller"
+                    android:id="@+id/seller"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorgrey4"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/mPrice"
+                    android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
 
                     android:textColor="@color/colorgrey5"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp" />
 
                 <Button
                     android:id="@+id/button"

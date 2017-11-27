@@ -1,37 +1,42 @@
 package victorcruz.dms.product;
 
-import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import victorcruz.dms.R;
 import victorcruz.dms.data.Product;
+import victorcruz.dms.util.CurrencyFormatter;
+import victorcruz.dms.util.SellerFormatter;
 
 
 public class ProductStoreAdapter extends BaseAdapter {
 
-    private final ArrayList<Product> products;
-    private final Activity act;
+    private final ArrayList<Product> mProductsList;
 
-    public ProductStoreAdapter(ArrayList<Product> products, Activity act){
-        this.products = products;
-        this.act = act;
+    private Context mContext;
+
+    public ProductStoreAdapter(Context mContext, ArrayList<Product> mProductsList){
+        this.mProductsList = mProductsList;
+        this.mContext = mContext;
     }
 
     @Override
     public int getCount() {
-        return products.size();
+        return mProductsList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return products.get(position);
+        return mProductsList.get(position);
     }
 
     @Override
@@ -41,9 +46,16 @@ public class ProductStoreAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = act.getLayoutInflater().inflate(R.layout.item_store, parent, false);
 
-        Product product = products.get(position);
+        View view;
+
+        if (convertView == null){
+            view = LayoutInflater.from(mContext).inflate(R.layout.item_store, parent, false);
+        }else{
+            view = convertView;
+        }
+
+        Product product = mProductsList.get(position);
 
         // seta os dados de cada produto em seu componente
         TextView title = (TextView) view.findViewById(R.id.title);
@@ -51,18 +63,13 @@ public class ProductStoreAdapter extends BaseAdapter {
         TextView seller = (TextView) view.findViewById(R.id.seller);
         ImageView image = (ImageView) view.findViewById(R.id.image);
 
-        image.setImageBitmap(product.getImage());
+        Picasso.with(mContext).load(product.getImageURL()).into(image);
 
         title.setText(product.getTitle());
 
-        DecimalFormat decimalFormat = new DecimalFormat("#,#####,00");
-        String valor = decimalFormat.format((double) product.getPrice());
-        valor = "R$ " + valor;
-        price.setText(valor);
+        price.setText(CurrencyFormatter.formatPrice(product.getPrice()));
 
-        String _seller = product.getSeller();
-        _seller = "de " + _seller;
-        seller.setText(_seller);
+        seller.setText(SellerFormatter.formatSeller(product.getSeller()));
 
         return view;
     }

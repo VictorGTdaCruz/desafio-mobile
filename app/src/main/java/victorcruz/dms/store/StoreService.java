@@ -15,20 +15,21 @@ public class StoreService implements StoreContract.Service {
 
     private final StoreContract.Presenter mStorePresenter;
 
-    private String JSONString;
-
     public StoreService(StoreContract.Presenter mStorePresenter){
         this.mStorePresenter = mStorePresenter;
     }
 
     @Override
-    public void downloadProductsString(final StoreContract.Callback callback) {
+    public void getProductsString(final StoreContract.GetProductsStringCallback getProductsStringCallback) {
 
-        Thread mDownloadJSONThread = new Thread(new Runnable() {
+        Thread mGetJSONThread = new Thread(new Runnable() {
+
             @Override
             public void run() {
 
                 try {
+
+                    String JSONString = "";
 
                     // InputStream vai receber os bytes e decodificar em char e salvar em result
                     URL url = new URL("https://raw.githubusercontent.com/stone-pagamentos/desafio-mobile/master/products.json");
@@ -50,7 +51,7 @@ public class StoreService implements StoreContract.Service {
                     inputStream.close();
                     httpURLConnection.disconnect();
 
-                    callback.onSuccess(JSONString);
+                    getProductsStringCallback.onSuccess(JSONString);
 
                 } catch (MalformedURLException e) {
                     // metodo de erro
@@ -59,12 +60,13 @@ public class StoreService implements StoreContract.Service {
                     //metodo de erro
                     e.printStackTrace();
                 } catch (Exception e){
-                    callback.onError(e);
+                    e.printStackTrace();
+                    getProductsStringCallback.onError(e);
                 }
             }
 
         }, "DownloadJSONThread");
-        mDownloadJSONThread.start();
+        mGetJSONThread.start();
     }
 
 }

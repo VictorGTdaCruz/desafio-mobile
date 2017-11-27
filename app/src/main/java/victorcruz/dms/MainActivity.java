@@ -1,10 +1,9 @@
 package victorcruz.dms;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,10 +12,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import victorcruz.dms.UI.ExpandableHeightListView;
 import victorcruz.dms.UI.PaymentDialogFragment;
-import victorcruz.dms.get_post_data.GetJSON;
 import victorcruz.dms.product.ProductHandler;
+import victorcruz.dms.store.StoreFragment;
 import victorcruz.dms.transaction.TransactionsHandler;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private ProductHandler productHandler;
     private TransactionsHandler transactionsHandler;
 
+    private StoreFragment mStoreFragment;
+
+    private FragmentManager mFragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        mFragmentManager = getSupportFragmentManager();
+
+        mStoreFragment = new StoreFragment();
+        mFragmentManager.beginTransaction().add(R.id.fragment_container_layout, mStoreFragment).commit();
+
+        ToolbarTitleTextView = (TextView) findViewById(R.id.toolbarTitleTextView);
+
+        /*
         // Android UI
         ExpandableHeightListView storeListView = (ExpandableHeightListView) findViewById(R.id.storeListView);
         ExpandableHeightListView cartListView = (ExpandableHeightListView) findViewById(R.id.cartListView);
@@ -57,10 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
         GetJSON getJSON = new GetJSON(productHandler);
         getJSON.execute();
-
+        */
     }
 
-    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mStoreFragment).commit();
+    }
 
     public void showPaymentDialog(View view){
 
@@ -91,24 +105,30 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     ToolbarTitleTextView.setText("Loja");
+                    mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mStoreFragment).commit();
+                    /*
                     storeScrollView.setVisibility(View.VISIBLE);
                     cartScrollView.setVisibility(View.INVISIBLE);
                     transactionScrollView.setVisibility(View.INVISIBLE);
-                    cartToolbarLinearLayout.setVisibility(View.INVISIBLE);
+                    cartToolbarLinearLayout.setVisibility(View.INVISIBLE);*/
                     return true;
                 case R.id.navigation_dashboard:
                     ToolbarTitleTextView.setText("Carrinho");
+                    mFragmentManager.beginTransaction().remove(mStoreFragment).commit();
+                    /*
                     storeScrollView.setVisibility(View.INVISIBLE);
                     cartScrollView.setVisibility(View.VISIBLE);
                     transactionScrollView.setVisibility(View.INVISIBLE);
-                    cartToolbarLinearLayout.setVisibility(View.VISIBLE);
+                    cartToolbarLinearLayout.setVisibility(View.VISIBLE);*/
                     return true;
                 case R.id.navigation_notifications:
                     ToolbarTitleTextView.setText("Transações");
+                    mFragmentManager.beginTransaction().remove(mStoreFragment).commit();
+                    /*
                     storeScrollView.setVisibility(View.INVISIBLE);
                     cartScrollView.setVisibility(View.INVISIBLE);
                     transactionScrollView.setVisibility(View.VISIBLE);
-                    cartToolbarLinearLayout.setVisibility(View.INVISIBLE);
+                    cartToolbarLinearLayout.setVisibility(View.INVISIBLE);*/
                     return true;
             }
             return false;

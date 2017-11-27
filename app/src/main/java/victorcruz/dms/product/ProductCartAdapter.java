@@ -51,7 +51,7 @@ public class ProductCartAdapter extends BaseAdapter {
         TextView seller = (TextView) view.findViewById(R.id.seller);
         ImageView image = (ImageView) view.findViewById(R.id.image);
 
-        image.setImageBitmap(product.getImage());
+        //image.setImageBitmap(product.getImage());
 
         title.setText(product.getTitle());
 

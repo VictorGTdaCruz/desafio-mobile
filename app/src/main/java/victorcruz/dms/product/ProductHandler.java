@@ -40,7 +40,7 @@ public class ProductHandler {
 
         productsStore = new ArrayList<>();
         productsCart = new ArrayList<>();
-        productsStoreAdapter = new ProductStoreAdapter(productsStore, act);
+        //productsStoreAdapter = new ProductStoreAdapter(productsStore, act);
         productsCartAdapter = new ProductCartAdapter(productsCart, act);
     }
 

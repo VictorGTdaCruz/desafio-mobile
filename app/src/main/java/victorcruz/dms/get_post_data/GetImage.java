@@ -38,7 +38,7 @@ public class GetImage extends AsyncTask<String, Void, Bitmap> {
     protected void onPostExecute(Bitmap image) {
         super.onPostExecute(image);
 
-        productHandler.getProductsStore().get(index).setImage(image);
+        //productHandler.getProductsStore().get(index).setImage(image);
         productHandler.refreshStoreView();
 
     }

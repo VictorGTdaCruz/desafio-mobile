@@ -6,7 +6,7 @@ O desafio consiste em criar uma loja de itens de Star Wars que o usuário é cap
 
 O candidato deve dar **fork** neste repositório e após o termino do desenvolvimento, realizar um **pull request** para análise do time.
 
-Para obter os itens da loja, sua aplicação deverá realizar uma chamada `GET` na URL https://raw.githubusercontent.com/stone-pagamentos/desafio-mobile/master/products.json
+Para obter os itens da loja, sua aplicação deverá realizar uma chamada `GET` na URL https://raw.githubusercontent.com/stone-pagamentos/desafio-mobile/master/mProductsList.json
 
 A lista de itens deve exibir as seguintes informações:
 + Nome [mTitle]

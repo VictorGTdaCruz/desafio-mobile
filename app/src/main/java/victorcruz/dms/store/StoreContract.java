@@ -15,7 +15,7 @@ public interface StoreContract {
 
     interface View extends BaseView{
 
-        void setItens(ArrayList<Product> productsStore);
+        void setItens(ArrayList<Product> mProductsList);
 
         // mensagem de erro no json
 
@@ -23,7 +23,7 @@ public interface StoreContract {
 
     interface Presenter extends BasePresenter{
 
-        void getProducts();
+        void getProductsList();
 
         void formatJSON(String productsJSON);
 
@@ -31,11 +31,11 @@ public interface StoreContract {
 
     interface Service extends BaseService {
 
-        void downloadProductsString(Callback callback);
+        void getProductsString(GetProductsStringCallback getProductsStringCallback);
 
     }
 
-    interface Callback{
+    interface GetProductsStringCallback {
 
         void onSuccess(String JSONString);
 

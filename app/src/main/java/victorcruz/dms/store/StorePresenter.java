@@ -6,13 +6,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import victorcruz.dms.get_post_data.GetImage;
 import victorcruz.dms.data.Product;
 /**
  * Created by victor.cruz on 22/11/2017.
  */
 
-public class StorePresenter implements StoreContract.Presenter, StoreContract.Callback {
+public class StorePresenter implements StoreContract.Presenter, StoreContract.GetProductsStringCallback {
 
     //referencia para a camada view
     private final StoreContract.View mStoreView;
@@ -26,8 +25,8 @@ public class StorePresenter implements StoreContract.Presenter, StoreContract.Ca
     }
 
     @Override
-    public void getProducts() {
-        mStoreService.downloadProductsString(this);
+    public void getProductsList() {
+        mStoreService.getProductsString(this);
     }
 
     @Override
@@ -40,40 +39,36 @@ public class StorePresenter implements StoreContract.Presenter, StoreContract.Ca
 
     }
 
-
     @Override
     public void formatJSON(String productsString) {
-/*
+
         try {
 
-            JSONArray productsJSON = new JSONArray(productsString);
+            JSONArray productsJSONArray = new JSONArray(productsString);
 
-            for (int i = 0; i < productsJSON.length(); i++) {
-                // separa o json em produtos
-                JSONObject product = productsJSON.getJSONObject(i);
+            ArrayList<Product> mProductList = new ArrayList<>(productsJSONArray.length());
 
-                // baixa a imagem de cada produto
-                // metodo de baixar imagem do service
-                getImage = new GetImage(i, productHandler);
-                getImage.execute(product.getString("thumbnailHd"));
+            for (int i = 0; i < productsJSONArray.length(); i++) {
 
-                // cria cada item_store
-                productHandler.getProductsStore().add(new Product(
-                        product.getString("title"),
-                        product.getInt("price"),
-                        product.getString("zipcode"),
-                        product.getString("seller"),
-                        null,
-                        product.getString("date")));
+                JSONObject JSONproduct = productsJSONArray.getJSONObject(i);
 
+                // seta os campos de cada produto
+                mProductList.add(new Product(
+                        JSONproduct.getString("title"),
+                        JSONproduct.getInt("price"),
+                        JSONproduct.getString("zipcode"),
+                        JSONproduct.getString("seller"),
+                        JSONproduct.getString("thumbnailHd"),
+                        JSONproduct.getString("date")));
             }
+
+            mStoreView.setItens(mProductList);
+
         } catch (JSONException e) {
-            // metodo de erro no view
+            // metodo de erro
             e.printStackTrace();
         }
 
-        mStoreView.setItens(mProductsList);*/
+
     }
-
-
 }

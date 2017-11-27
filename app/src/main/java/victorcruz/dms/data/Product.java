@@ -1,21 +1,19 @@
 package victorcruz.dms.data;
 
-import android.graphics.Bitmap;
-
 public class Product {
     private String mTitle;
     private int mPrice;
     private String mZipcode;
     private String mSeller;
-    private Bitmap mImage;
+    private String mImageURL;
     private String mDate;
 
-    public Product(String mTitle, int mPrice, String mZipcode, String mSeller, Bitmap mImage, String mDate) {
+    public Product(String mTitle, int mPrice, String mZipcode, String mSeller, String mImageURL, String mDate) {
         this.mTitle = mTitle;
         this.mPrice = mPrice;
         this.mZipcode = mZipcode;
         this.mSeller = mSeller;
-        this.mImage = mImage;
+        this. mImageURL = mImageURL;
         this.mDate = mDate;
     }
 
@@ -24,7 +22,7 @@ public class Product {
         this.mPrice = product.getPrice();
         this.mZipcode = product.getZipcode();
         this.mSeller = product.getSeller();
-        this.mImage = product.getImage();
+        this. mImageURL = mImageURL;
         this.mDate = product.getDate();
     }
 
@@ -44,12 +42,12 @@ public class Product {
         return mSeller;
     }
 
-    public Bitmap getImage() {
-        return mImage;
+    public String getImageURL() {
+        return mImageURL;
     }
 
-    public void setImage(Bitmap mImage) {
-        this.mImage = mImage;
+    public void setImageURL(String mImageURL) {
+        this.mImageURL = mImageURL;
     }
 
     public String getDate() {
