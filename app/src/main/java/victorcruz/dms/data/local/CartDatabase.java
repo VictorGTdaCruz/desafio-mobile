@@ -14,7 +14,7 @@ public class CartDatabase {
     private SQLiteDatabase sqLiteDatabase;
 
     private CartDatabase(){
-        sqLiteDatabase = MyApplication.getAppContext().openOrCreateDatabase("cart", Context.MODE_PRIVATE, null);//Application to get context
+        sqLiteDatabase = MyApplication.getAppContext().openOrCreateDatabase("cart", Context.MODE_PRIVATE, null);
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS cart (id INTEGER PRIMARY KEY, title TEXT, value INTEGER(7), seller TEXT, thumbnail TEXT)");
     }
 
@@ -37,11 +37,11 @@ public class CartDatabase {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS cart");
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS cart (id INTEGER PRIMARY KEY, title TEXT, value INTEGER(7), seller TEXT, thumbnail TEXT)");
     }
-/*
-    public void removeItemFromCart(Product product){//'" + product.getTitle() + "'
+
+    public void removeItemFromCart(Product product){
         sqLiteDatabase.execSQL("DELETE FROM cart WHERE id IN (SELECT id FROM cart WHERE title = '" + product.getTitle() + "' LIMIT 1)");
     }
-*/
+
 
     /*public long getCartSize(){
         return DatabaseUtils.queryNumEntries(sqLiteDatabase, "cart");
