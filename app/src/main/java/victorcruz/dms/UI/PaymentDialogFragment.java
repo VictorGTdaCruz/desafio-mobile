@@ -52,7 +52,7 @@ public class PaymentDialogFragment extends DialogFragment {
 
                         productHandler.resetCart();
 
-                        transactionsHandler.newTransaction(jsonObject);
+                        //transactionsHandler.newTransaction(jsonObject);
 
                     }
                 })

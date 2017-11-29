@@ -5,15 +5,15 @@ public class Product {
     private int mPrice;
     private String mZipcode;
     private String mSeller;
-    private String mImageURL;
+    private String mThumbnail;
     private String mDate;
 
-    public Product(String mTitle, int mPrice, String mZipcode, String mSeller, String mImageURL, String mDate) {
+    public Product(String mTitle, int mPrice, String mZipcode, String mSeller, String mThumbnail, String mDate) {
         this.mTitle = mTitle;
         this.mPrice = mPrice;
         this.mZipcode = mZipcode;
         this.mSeller = mSeller;
-        this. mImageURL = mImageURL;
+        this.mThumbnail = mThumbnail;
         this.mDate = mDate;
     }
 
@@ -22,7 +22,7 @@ public class Product {
         this.mPrice = product.getPrice();
         this.mZipcode = product.getZipcode();
         this.mSeller = product.getSeller();
-        this. mImageURL = mImageURL;
+        this.mThumbnail = product.mThumbnail;
         this.mDate = product.getDate();
     }
 
@@ -34,7 +34,7 @@ public class Product {
         return mPrice;
     }
 
-    public String getZipcode(){
+    public String getZipcode() {
         return mZipcode;
     }
 
@@ -42,12 +42,8 @@ public class Product {
         return mSeller;
     }
 
-    public String getImageURL() {
-        return mImageURL;
-    }
-
-    public void setImageURL(String mImageURL) {
-        this.mImageURL = mImageURL;
+    public String getThumbnail() {
+        return mThumbnail;
     }
 
     public String getDate() {

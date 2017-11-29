@@ -1,34 +1,38 @@
 package victorcruz.dms.transaction;
 
-import android.app.Activity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import victorcruz.dms.R;
+import victorcruz.dms.util.CardFromatter;
+import victorcruz.dms.util.CurrencyFormatter;
+import victorcruz.dms.util.DateFormatter;
+import victorcruz.dms.util.MyApplication;
 
 public class TransactionAdapter extends BaseAdapter{
 
-    private Activity act;
-    private ArrayList<Transaction> transactionsArrayList;
+    private ArrayList<Transaction> mTransactionList;
 
-    public TransactionAdapter(Activity act, ArrayList transactionsArrayList){
-        this.act = act;
-        this.transactionsArrayList = transactionsArrayList;
+    private TransactionContract.View mTransactionFragment;
+
+    public TransactionAdapter(ArrayList mTransactionList, TransactionContract.View mTransactionFragment){
+        this.mTransactionList = mTransactionList;
+        this.mTransactionFragment = mTransactionFragment;
     }
 
     @Override
     public int getCount() {
-        return transactionsArrayList.size();
+        return mTransactionList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return transactionsArrayList.get(position);
+        return mTransactionList.get(position);
     }
 
     @Override
@@ -38,9 +42,16 @@ public class TransactionAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = act.getLayoutInflater().inflate(R.layout.transaction, parent, false);
 
-        Transaction transaction = transactionsArrayList.get(position);
+        View view;
+
+        if (convertView == null){
+            view = LayoutInflater.from(MyApplication.getAppContext()).inflate(R.layout.item_transaction, parent, false);
+        }else{
+            view = convertView;
+        }
+
+        Transaction transaction = mTransactionList.get(position);
 
         TextView value = (TextView) view.findViewById(R.id.transactionValueTextView);
         TextView name = (TextView) view.findViewById(R.id.transactionNameTextView);
@@ -48,17 +59,14 @@ public class TransactionAdapter extends BaseAdapter{
         TextView date = (TextView) view.findViewById(R.id.transactionDateTextView);
         TextView hour = (TextView) view.findViewById(R.id.transactionHourTextView);
 
-        DecimalFormat decimalFormat = new DecimalFormat("#,#####,00");
-        String _value = decimalFormat.format((double) transaction.getValue());
-        _value = "R$ " + _value;
-        value.setText(_value);
+        value.setText(CurrencyFormatter.formatPrice(transaction.getValue()));
 
         name.setText(transaction.getCardName());
 
-        cardNumber.setText("XXXX XXXX XXXX " + transaction.getCardNumber());
+        cardNumber.setText(CardFromatter.formatCard(transaction.getCardNumber()));
 
-        hour.setText(transaction.getDate().substring(0,5));
-        date.setText(transaction.getDate().substring(6,16));
+        hour.setText(DateFormatter.formatHour(transaction.getDate()));
+        date.setText(DateFormatter.formatDate(transaction.getDate()));
 
         return view;
     }

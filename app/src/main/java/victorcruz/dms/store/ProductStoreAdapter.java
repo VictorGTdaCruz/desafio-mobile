@@ -1,10 +1,10 @@
-package victorcruz.dms.product;
+package victorcruz.dms.store;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,18 +15,18 @@ import java.util.ArrayList;
 import victorcruz.dms.R;
 import victorcruz.dms.data.Product;
 import victorcruz.dms.util.CurrencyFormatter;
+import victorcruz.dms.util.MyApplication;
 import victorcruz.dms.util.SellerFormatter;
-
 
 public class ProductStoreAdapter extends BaseAdapter {
 
     private final ArrayList<Product> mProductsList;
 
-    private Context mContext;
+    private StoreContract.CallbackAddItemToCart callbackAddItemToCart;
 
-    public ProductStoreAdapter(Context mContext, ArrayList<Product> mProductsList){
+    public ProductStoreAdapter(ArrayList<Product> mProductsList, StoreContract.CallbackAddItemToCart callbackAddItemToCart){
         this.mProductsList = mProductsList;
-        this.mContext = mContext;
+        this.callbackAddItemToCart = callbackAddItemToCart;
     }
 
     @Override
@@ -45,15 +45,25 @@ public class ProductStoreAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View view;
 
         if (convertView == null){
-            view = LayoutInflater.from(mContext).inflate(R.layout.item_store, parent, false);
+            view = LayoutInflater.from(
+                    MyApplication.getAppContext()
+            ).inflate(R.layout.item_store, parent, false);
         }else{
             view = convertView;
         }
+
+        Button button = (Button) view.findViewById(R.id.add_to_cart_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callbackAddItemToCart.addItemToCart(position);
+            }
+        });
 
         Product product = mProductsList.get(position);
 
@@ -63,7 +73,7 @@ public class ProductStoreAdapter extends BaseAdapter {
         TextView seller = (TextView) view.findViewById(R.id.seller);
         ImageView image = (ImageView) view.findViewById(R.id.image);
 
-        Picasso.with(mContext).load(product.getImageURL()).into(image);
+        Picasso.with(MyApplication.getAppContext()).load(product.getThumbnail()).into(image);
 
         title.setText(product.getTitle());
 

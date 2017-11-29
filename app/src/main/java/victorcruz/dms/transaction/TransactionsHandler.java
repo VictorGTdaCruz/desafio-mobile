@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class TransactionsHandler {
-
+/*
     private ListView transactionsListView;
 
     private ArrayList<Transaction> transactionsArrayList;
@@ -32,7 +32,7 @@ public class TransactionsHandler {
 
         refreshTransactionsArrayList();
 
-        transactionAdapter = new TransactionAdapter(act, transactionsArrayList);
+        //transactionAdapter = new TransactionAdapter(act, transactionsArrayList);
         refreshTransactionsView();
     }
 
@@ -94,6 +94,6 @@ public class TransactionsHandler {
     public void refreshTransactionsView(){
         transactionsListView.setAdapter(transactionAdapter);
     }
-
+*/
 
 }

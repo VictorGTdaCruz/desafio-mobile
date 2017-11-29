@@ -7,14 +7,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import victorcruz.dms.data.Product;
-/**
- * Created by victor.cruz on 22/11/2017.
- */
+import victorcruz.dms.data.local.CartDatabase;
+import victorcruz.dms.data.remote.StoreService;
 
-public class StorePresenter implements StoreContract.Presenter, StoreContract.GetProductsStringCallback {
+public class StorePresenter implements StoreContract.Presenter, StoreContract.CallbackGetProductsString {
 
     //referencia para a camada view
-    private final StoreContract.View mStoreView;
+    private StoreContract.View mStoreView;
 
     //referencia para a camada service
     private StoreContract.Service mStoreService;
@@ -26,7 +25,7 @@ public class StorePresenter implements StoreContract.Presenter, StoreContract.Ge
 
     @Override
     public void getProductsList() {
-        mStoreService.getProductsString(this);
+        mStoreService.getJSONString(this);
     }
 
     @Override
@@ -68,7 +67,11 @@ public class StorePresenter implements StoreContract.Presenter, StoreContract.Ge
             // metodo de erro
             e.printStackTrace();
         }
+    }
 
-
+    @Override
+    public void addItemToCart(Product product) {
+        CartDatabase mCartDatabase = CartDatabase.getInstance();
+        mCartDatabase.addItemToCart(product);
     }
 }

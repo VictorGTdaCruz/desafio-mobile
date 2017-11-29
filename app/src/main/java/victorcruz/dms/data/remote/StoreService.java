@@ -1,4 +1,4 @@
-package victorcruz.dms.store;
+package victorcruz.dms.data.remote;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,9 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by victor.cruz on 22/11/2017.
- */
+import victorcruz.dms.store.StoreContract;
 
 public class StoreService implements StoreContract.Service {
 
@@ -20,7 +18,7 @@ public class StoreService implements StoreContract.Service {
     }
 
     @Override
-    public void getProductsString(final StoreContract.GetProductsStringCallback getProductsStringCallback) {
+    public void getJSONString(final StoreContract.CallbackGetProductsString callbackGetProductsString) {
 
         Thread mGetJSONThread = new Thread(new Runnable() {
 
@@ -51,7 +49,7 @@ public class StoreService implements StoreContract.Service {
                     inputStream.close();
                     httpURLConnection.disconnect();
 
-                    getProductsStringCallback.onSuccess(JSONString);
+                    callbackGetProductsString.onSuccess(JSONString);
 
                 } catch (MalformedURLException e) {
                     // metodo de erro
@@ -61,7 +59,7 @@ public class StoreService implements StoreContract.Service {
                     e.printStackTrace();
                 } catch (Exception e){
                     e.printStackTrace();
-                    getProductsStringCallback.onError(e);
+                    callbackGetProductsString.onError(e);
                 }
             }
 

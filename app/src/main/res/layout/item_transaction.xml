@@ -24,7 +24,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:text="Valor"
-                android:textSize="18sp"/>
+                android:textColor="@color/colorgrey5"
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -41,7 +42,8 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="Nome"
-                    android:textSize="14sp"/>
+                    android:textColor="@color/colorgrey5"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/transactionCardTextView"
@@ -50,7 +52,8 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="Numero do Cartao"
-                    android:textSize="14sp"/>
+                    android:textColor="@color/colorgrey5"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -68,7 +71,8 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:text="TextView"
-                    android:textSize="12sp"/>
+                    android:textColor="@color/colorgrey5"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/transactionDateTextView"
@@ -77,7 +81,8 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:text="Data"
-                    android:textSize="12sp"/>
+                    android:textColor="@color/colorgrey5"
+                    android:textSize="12sp" />
             </LinearLayout>
 
         </LinearLayout>

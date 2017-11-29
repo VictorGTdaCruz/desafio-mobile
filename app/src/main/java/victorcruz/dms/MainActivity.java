@@ -6,32 +6,23 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import victorcruz.dms.UI.PaymentDialogFragment;
-import victorcruz.dms.product.ProductHandler;
+import victorcruz.dms.cart.CartFragment;
+import victorcruz.dms.data.local.CartDatabase;
 import victorcruz.dms.store.StoreFragment;
-import victorcruz.dms.transaction.TransactionsHandler;
+import victorcruz.dms.transaction.TransactionFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Android UI
-    private ScrollView storeScrollView;
-    private ScrollView cartScrollView;
-    private ScrollView transactionScrollView;
-    private LinearLayout cartToolbarLinearLayout;
     private TextView ToolbarTitleTextView;
 
-    private ProductHandler productHandler;
-    private TransactionsHandler transactionsHandler;
-
     private StoreFragment mStoreFragment;
+    private CartFragment mCartFragment;
+    private TransactionFragment mTransactionFragment;
 
     private FragmentManager mFragmentManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,41 +33,15 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         mFragmentManager = getSupportFragmentManager();
-
-        mStoreFragment = new StoreFragment();
+        mStoreFragment = StoreFragment.newInstance();
+        mCartFragment = CartFragment.newInstance();
+        mTransactionFragment = TransactionFragment.newInstance();
         mFragmentManager.beginTransaction().add(R.id.fragment_container_layout, mStoreFragment).commit();
-
         ToolbarTitleTextView = (TextView) findViewById(R.id.toolbarTitleTextView);
 
-        /*
-        // Android UI
-        ExpandableHeightListView storeListView = (ExpandableHeightListView) findViewById(R.id.storeListView);
-        ExpandableHeightListView cartListView = (ExpandableHeightListView) findViewById(R.id.cartListView);
-        ExpandableHeightListView transactionListView = (ExpandableHeightListView) findViewById(R.id.transactionListView);
-        storeScrollView = (ScrollView) findViewById(R.id.storeScrollView);
-        cartScrollView = (ScrollView) findViewById(R.id.cartScrollView);
-        transactionScrollView = (ScrollView) findViewById(R.id.transactionScrollView);
-        cartToolbarLinearLayout = (LinearLayout) findViewById(R.id.cartToolbarLinearLayout);
-        ToolbarTitleTextView = (TextView) findViewById(R.id.toolbarTitleTextView);
-        TextView cartTotalValueTextView = (TextView) findViewById(R.id.cartTotalValueTextView);
-
-        // mantem controle dos produtos e transacoes
-        productHandler = new ProductHandler(storeListView, cartListView, cartTotalValueTextView, this);
-        transactionsHandler = new TransactionsHandler(this, transactionListView);
-
-
-        GetJSON getJSON = new GetJSON(productHandler);
-        getJSON.execute();
-        */
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mStoreFragment).commit();
-    }
-
-    public void showPaymentDialog(View view){
+    /*public void showPaymentDialog(View view){
 
         if(productHandler.getCartTotalValue() == 0){
             Toast.makeText(this, "O seu carrinho está vazio!", Toast.LENGTH_SHORT).show();
@@ -87,15 +52,7 @@ public class MainActivity extends AppCompatActivity {
             paymentDialogFragment.show(getSupportFragmentManager(), null);
         }
 
-    }
-
-    public void addToCart(View view){
-        productHandler.addToCart(view);
-    }
-
-    public void removeFromCart(View view){
-        productHandler.removeFromCart(view);
-    }
+    }*/
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -103,32 +60,17 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigation_store:
                     ToolbarTitleTextView.setText("Loja");
                     mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mStoreFragment).commit();
-                    /*
-                    storeScrollView.setVisibility(View.VISIBLE);
-                    cartScrollView.setVisibility(View.INVISIBLE);
-                    transactionScrollView.setVisibility(View.INVISIBLE);
-                    cartToolbarLinearLayout.setVisibility(View.INVISIBLE);*/
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.navigation_cart:
                     ToolbarTitleTextView.setText("Carrinho");
-                    mFragmentManager.beginTransaction().remove(mStoreFragment).commit();
-                    /*
-                    storeScrollView.setVisibility(View.INVISIBLE);
-                    cartScrollView.setVisibility(View.VISIBLE);
-                    transactionScrollView.setVisibility(View.INVISIBLE);
-                    cartToolbarLinearLayout.setVisibility(View.VISIBLE);*/
+                    mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mCartFragment).commit();
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_transactions:
                     ToolbarTitleTextView.setText("Transações");
-                    mFragmentManager.beginTransaction().remove(mStoreFragment).commit();
-                    /*
-                    storeScrollView.setVisibility(View.INVISIBLE);
-                    cartScrollView.setVisibility(View.INVISIBLE);
-                    transactionScrollView.setVisibility(View.VISIBLE);
-                    cartToolbarLinearLayout.setVisibility(View.INVISIBLE);*/
+                    mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mTransactionFragment).commit();
                     return true;
             }
             return false;

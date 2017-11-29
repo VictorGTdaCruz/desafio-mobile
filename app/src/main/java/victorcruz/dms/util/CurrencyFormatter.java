@@ -15,4 +15,9 @@ public class CurrencyFormatter {
         return formattedPrice;
     }
 
+    public static int unformatPrice(String price){
+        price = price.substring(3).replaceAll(",","");
+        return Integer.parseInt(price);
+    }
+
 }

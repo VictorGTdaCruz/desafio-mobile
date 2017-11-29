@@ -2,44 +2,43 @@ package victorcruz.dms.store;
 
 import java.util.ArrayList;
 
-import victorcruz.dms.BaseService;
-import victorcruz.dms.BasePresenter;
-import victorcruz.dms.BaseView;
 import victorcruz.dms.data.Product;
-
-/**
- * Created by victor.cruz on 22/11/2017.
- */
 
 public interface StoreContract {
 
-    interface View extends BaseView{
+    interface View {
 
         void setItens(ArrayList<Product> mProductsList);
 
-        // mensagem de erro no json
-
     }
 
-    interface Presenter extends BasePresenter{
+    interface Presenter {
 
         void getProductsList();
 
-        void formatJSON(String productsJSON);
+        void formatJSON(String mProductsJSON);
+
+        void addItemToCart(Product product);
 
     }
 
-    interface Service extends BaseService {
+    interface Service {
 
-        void getProductsString(GetProductsStringCallback getProductsStringCallback);
+        void getJSONString(CallbackGetProductsString callbackGetProductsString);
 
     }
 
-    interface GetProductsStringCallback {
+    interface CallbackGetProductsString {
 
         void onSuccess(String JSONString);
 
         void onError(Exception e);
+
+    }
+
+    interface CallbackAddItemToCart{
+
+        void addItemToCart(int position);
 
     }
 
