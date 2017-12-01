@@ -20,6 +20,8 @@ import victorcruz.dms.CartFragmentAndPaymentFragmentContract.ActivityPlsGetPrice
 
 public class MainActivity extends AppCompatActivity implements ActivityPlsGetPriceInterface, ActivityPlsClearCartInterface {
 
+
+
     private TextView mToolbarTitleTextView;
     private Button mToolbarButton;
 
@@ -51,17 +53,17 @@ public class MainActivity extends AppCompatActivity implements ActivityPlsGetPri
     }
 
     @Override
-    public void ActivityPlsClearCart() {
-        mCartFragment.CartFragmentPlsClearCart();
+    public void activityPlsClearCart() {
+        mCartFragment.cartFragmentPlsClearCart();
     }
 
     @Override
-    public int ActivityPlsGetPrice() {
-        return mCartFragment.CartFragmentPlsGetPrice();
+    public int activityPlsGetPrice() {
+        return mCartFragment.cartFragmentPlsGetPrice();
     }
 
     public void showPaymentDialog(View view){
-        if (mCartFragment.CartFragmentPlsGetPrice() > 0){
+        if (mCartFragment.cartFragmentPlsGetPrice() > 0){
             paymentDialogFragment.show(mFragmentManager, null);
         } else Toast.makeText(this, "Carrinho Vazio", Toast.LENGTH_SHORT).show();
     }

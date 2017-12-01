@@ -82,12 +82,12 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     }
 
     @Override
-    public int CartFragmentPlsGetPrice() {
+    public int cartFragmentPlsGetPrice() {
         return mCartPresenter.getCartPrice(mProductsList);
     }
 
     @Override
-    public void CartFragmentPlsClearCart() {
+    public void cartFragmentPlsClearCart() {
         int mSizeBeforePayment = mProductsList.size();
         for (int i = 0; i < mSizeBeforePayment; i++) {
             mProductsList.remove(0);

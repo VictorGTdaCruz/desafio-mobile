@@ -4,21 +4,21 @@ public interface CartFragmentAndPaymentFragmentContract {
 
     //Activity implements and Payment fragment calls
     interface ActivityPlsClearCartInterface {
-        void ActivityPlsClearCart();
+        void activityPlsClearCart();
     }
 
     //Cart fragment implements and Activity calls
     interface CartFragmentPlsClearCartInterface {
-        void CartFragmentPlsClearCart();
+        void cartFragmentPlsClearCart();
     }
 
     //Activity implements and Payment fragment calls
     interface ActivityPlsGetPriceInterface {
-        int ActivityPlsGetPrice();
+        int activityPlsGetPrice();
     }
 
     //Cart fragment implements and Activity calls
     interface CartFragmentPlsGetPriceInterface {
-        int CartFragmentPlsGetPrice();
+        int cartFragmentPlsGetPrice();
     }
 }

@@ -54,7 +54,7 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
 
         // faz o valor no topo do fragmento
         mValue_text_view = (TextView) view.findViewById(R.id.value_text_view);
-        final int value = sendPriceFromCartToPaymentInterface.ActivityPlsGetPrice();
+        final int value = sendPriceFromCartToPaymentInterface.activityPlsGetPrice();
         mValue_text_view.setText(CurrencyFormatter.formatPrice(value));
 
         cardNumberEditText = (EditText)  view.findViewById(R.id.cardNumberEditText);
@@ -72,7 +72,7 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
                         String mCVV = cardCVVEditText.getText().toString();
                         String mExpDate = cardExpDateEditText.getText().toString();
                         mPaymentPresenter.sendPaymentInfoString(value, mCardNumber, mCardName, mCVV, mExpDate);
-                        mActivityPlsClearCartInterfaceInterface.ActivityPlsClearCart();
+                        mActivityPlsClearCartInterfaceInterface.activityPlsClearCart();
 
                     }
                 })

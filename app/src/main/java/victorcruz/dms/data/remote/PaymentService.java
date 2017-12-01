@@ -42,7 +42,6 @@ public class PaymentService implements PaymentContract.Service{
 
                     httpURLConnection.disconnect();
 
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -50,6 +49,7 @@ public class PaymentService implements PaymentContract.Service{
             }
 
         }, "mPostJSONThread");
+
         mPostJSONThread.start();
 
     }
