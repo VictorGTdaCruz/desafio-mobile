@@ -6,18 +6,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import victorcruz.dms.MainActivity;
+import victorcruz.dms.CartFragmentAndPaymentFragmentContract;
 import victorcruz.dms.R;
 import victorcruz.dms.data.Product;
 
-public class CartFragment extends Fragment implements CartContract.View, CartContract.CallbackDeleteItemFromCart, MainActivity.GetCartPrice {
+public class CartFragment extends Fragment implements CartContract.View, CartContract.CallbackDeleteItemFromCart,
+        CartFragmentAndPaymentFragmentContract.CartFragmentPlsGetPriceInterface, CartFragmentAndPaymentFragmentContract.CartFragmentPlsClearCartInterface {
 
     private CartPresenter mCartPresenter;
 
     private ListView mCartListView;
+    private TextView mEmptyCartTextView;
 
     private ProductCartAdapter mProductCartAdapter;
 
@@ -45,6 +48,7 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_cart, container, false);
         mCartListView = (ListView) root.findViewById(R.id.cart_list_view);
+        mEmptyCartTextView = (TextView) root.findViewById(R.id.empty_cart_text_view);
         return root;
     }
 
@@ -63,18 +67,32 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     @Override
     public void setItens(ArrayList<Product> mProductsList) {
         this.mProductsList = mProductsList;
-        mProductCartAdapter = new ProductCartAdapter(mProductsList, this);
-        mCartListView.setAdapter(mProductCartAdapter);
+        if (mProductsList.size() != 0){
+            mEmptyCartTextView.setVisibility(View.INVISIBLE);
+            mProductCartAdapter = new ProductCartAdapter(mProductsList, this);
+            mCartListView.setAdapter(mProductCartAdapter);
+        }
     }
 
     @Override
     public void deleteItemFromCart(int position) {
         mProductsList.remove(position);
         mProductCartAdapter.notifyDataSetChanged();
+        if (mProductsList.size() == 0) mEmptyCartTextView.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public int getPrice() {
+    public int CartFragmentPlsGetPrice() {
         return mCartPresenter.getCartPrice(mProductsList);
+    }
+
+    @Override
+    public void CartFragmentPlsClearCart() {
+        int mSizeBeforePayment = mProductsList.size();
+        for (int i = 0; i < mSizeBeforePayment; i++) {
+            mProductsList.remove(0);
+        }
+        mProductCartAdapter.notifyDataSetChanged();
+        if (mProductsList.size() == 0) mEmptyCartTextView.setVisibility(View.VISIBLE);
     }
 }

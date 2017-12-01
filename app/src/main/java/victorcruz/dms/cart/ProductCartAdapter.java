@@ -24,7 +24,7 @@ public class ProductCartAdapter extends BaseAdapter {
 
     private CartContract.CallbackDeleteItemFromCart callbackDeleteItemFromCart;
 
-    public ProductCartAdapter(ArrayList<Product> mProductsList, CartContract.CallbackDeleteItemFromCart callbackDeleteItemFromCart){
+    ProductCartAdapter(ArrayList<Product> mProductsList, CartContract.CallbackDeleteItemFromCart callbackDeleteItemFromCart){
         this.mProductsList = mProductsList;
         this.callbackDeleteItemFromCart = callbackDeleteItemFromCart;
     }

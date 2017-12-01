@@ -1,5 +1,6 @@
 package victorcruz.dms.data.local;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,8 +15,7 @@ public class TransactionDatabase {
     private SQLiteDatabase sqLiteDatabase;
 
     private TransactionDatabase(){
-        sqLiteDatabase = MyApplication.getAppContext().openOrCreateDatabase("transactions", MyApplication.getAppContext().MODE_PRIVATE, null);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS transactions");
+        sqLiteDatabase = MyApplication.getAppContext().openOrCreateDatabase("transactions", Context.MODE_PRIVATE, null);
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS transactions (id INTEGER PRIMARY KEY, value INTEGER, card_name TEXT, card_number TEXT, cvv TEXT, card_exp_date TEXT, transaction_date TEXT)");
     }
 
@@ -36,7 +36,6 @@ public class TransactionDatabase {
     }
 
     public Cursor getTransactionList(){
-        Cursor c = sqLiteDatabase.rawQuery("SELECT * FROM transactions", null);
-        return c;
+        return sqLiteDatabase.rawQuery("SELECT * FROM transactions", null);
     }
 }

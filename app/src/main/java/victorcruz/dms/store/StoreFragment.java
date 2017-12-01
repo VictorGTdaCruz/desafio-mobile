@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -17,9 +18,10 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
 
     private StoreContract.Presenter mPresenter;
 
-    private ProductStoreAdapter productStoreAdapter;
+    private ProductStoreAdapter mProductStoreAdapter;
 
-    private ListView storeListView;
+    private ListView mStoreListView;
+    private TextView mEmptyStoreTextView;
 
     private ArrayList<Product> mProductsList;
 
@@ -42,7 +44,9 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_store, container, false);
-        storeListView = (ListView) root.findViewById(R.id.store_list_view);
+        mStoreListView = (ListView) root.findViewById(R.id.store_list_view);
+        mEmptyStoreTextView = (TextView) root.findViewById(R.id.empty_store_text_view);
+        mEmptyStoreTextView.setText(R.string.store_loading_text_view);
         return root;
     }
 
@@ -56,22 +60,28 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
     public void setItens(final ArrayList<Product> mProductsList) {
         getActivity().runOnUiThread(new Runnable() {
                 @Override
-                public void run() {
-                    productStoreAdapter = new ProductStoreAdapter(mProductsList, StoreFragment.this);
-                    StoreFragment.this.setmProductsList(mProductsList);
-                    storeListView.setAdapter(productStoreAdapter);
+            public void run() {
+                mProductStoreAdapter = new ProductStoreAdapter(mProductsList, StoreFragment.this);
+                StoreFragment.this.setmProductsList(mProductsList);
+                mStoreListView.setAdapter(mProductStoreAdapter);
                 }
             }
         );
     }
 
     public void setmProductsList(ArrayList<Product> mProductsList){
+        mEmptyStoreTextView.setVisibility(View.INVISIBLE);
         this.mProductsList = mProductsList;
     }
 
     @Override
     public void addItemToCart(int position) {
         mPresenter.addItemToCart(mProductsList.get(position));
+    }
+
+    @Override
+    public void warningJsonError(){
+        mEmptyStoreTextView.setText(R.string.store_error_text_view);
     }
 
 }

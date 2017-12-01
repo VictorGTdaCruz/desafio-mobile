@@ -6,6 +6,13 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <TextView
+        android:id="@+id/empty_store_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:text="Carregando loja..." />
+
     <ListView
         android:id="@+id/store_list_view"
         android:layout_width="match_parent"

@@ -21,13 +21,6 @@ public class CartPresenter implements CartContract.Presenter{
         mCartFragment.setItens(cursorToArrayList(CartDatabase.getInstance().getCartItens()));
     }
 
-    /*
-    CartDatabase mCartDatabase = CartDatabase.getInstance();
-        mCartDatabase.resetCartTable();
-        for (int i = 0; i < mProductsList.size(); i++) {
-        mCartDatabase.addItemToCart(mProductsList.get(i));
-    }*/
-
     @Override
     public void saveProductsOfCart(ArrayList<Product> mNewList) {
 
@@ -70,12 +63,12 @@ public class CartPresenter implements CartContract.Presenter{
         return mProductList;
     }
 
-    public int getCartPrice(ArrayList<Product> mProductsList){
+    @Override
+    public int getCartPrice(ArrayList<Product> mProductsList) {
         int value = 0;
         for (int i = 0; i < mProductsList.size(); i++){
             value = value + mProductsList.get(i).getPrice();
         }
         return value;
     }
-
 }

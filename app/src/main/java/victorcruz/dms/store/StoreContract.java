@@ -10,6 +10,7 @@ public interface StoreContract {
 
         void setItens(ArrayList<Product> mProductsList);
 
+        void warningJsonError();
     }
 
     interface Presenter {

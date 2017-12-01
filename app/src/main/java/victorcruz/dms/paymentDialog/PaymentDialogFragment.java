@@ -14,19 +14,18 @@ import android.widget.TextView;
 
 import victorcruz.dms.R;
 import victorcruz.dms.util.CurrencyFormatter;
+import victorcruz.dms.CartFragmentAndPaymentFragmentContract.ActivityPlsClearCartInterface;
+import victorcruz.dms.CartFragmentAndPaymentFragmentContract.ActivityPlsGetPriceInterface;
 
 public class PaymentDialogFragment extends DialogFragment implements PaymentContract.View{
 
     private EditText cardNumberEditText, cardNameEditText, cardCVVEditText, cardExpDateEditText;
     private TextView mValue_text_view;
 
-    private SendPriceToPaymentFragment sendPriceToPaymentFragment;
+    private ActivityPlsGetPriceInterface sendPriceFromCartToPaymentInterface;
+    private ActivityPlsClearCartInterface mActivityPlsClearCartInterfaceInterface;
 
     private PaymentPresenter mPaymentPresenter;
-
-    public interface SendPriceToPaymentFragment {
-        int sendPrice();
-    }
 
     public static PaymentDialogFragment newInstance() {
         return new PaymentDialogFragment();
@@ -35,7 +34,8 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        sendPriceToPaymentFragment = (SendPriceToPaymentFragment) context;
+        sendPriceFromCartToPaymentInterface = (ActivityPlsGetPriceInterface) context;
+        mActivityPlsClearCartInterfaceInterface = (ActivityPlsClearCartInterface) context;
     }
 
     @Override
@@ -54,11 +54,8 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
 
         // faz o valor no topo do fragmento
         mValue_text_view = (TextView) view.findViewById(R.id.value_text_view);
-        final int value = sendPriceToPaymentFragment.sendPrice();
+        final int value = sendPriceFromCartToPaymentInterface.ActivityPlsGetPrice();
         mValue_text_view.setText(CurrencyFormatter.formatPrice(value));
-
-        // coleta os dados para o POST
-        //final JSONObject jsonObject = makeJson(productHandler.getPrice(), view);
 
         cardNumberEditText = (EditText)  view.findViewById(R.id.cardNumberEditText);
         cardNameEditText = (EditText)  view.findViewById(R.id.cardNameEditText);
@@ -75,9 +72,7 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
                         String mCVV = cardCVVEditText.getText().toString();
                         String mExpDate = cardExpDateEditText.getText().toString();
                         mPaymentPresenter.sendPaymentInfoString(value, mCardNumber, mCardName, mCVV, mExpDate);
-
-                        //productHandler.resetCart();
-                        //transactionsHandler.newTransaction(jsonObject);
+                        mActivityPlsClearCartInterfaceInterface.ActivityPlsClearCart();
 
                     }
                 })

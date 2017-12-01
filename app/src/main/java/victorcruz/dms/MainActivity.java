@@ -9,13 +9,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import victorcruz.dms.cart.CartFragment;
 import victorcruz.dms.paymentDialog.PaymentDialogFragment;
 import victorcruz.dms.store.StoreFragment;
 import victorcruz.dms.transactions.TransactionFragment;
+import victorcruz.dms.CartFragmentAndPaymentFragmentContract.ActivityPlsClearCartInterface;
+import victorcruz.dms.CartFragmentAndPaymentFragmentContract.ActivityPlsGetPriceInterface;
 
-public class MainActivity extends AppCompatActivity implements victorcruz.dms.paymentDialog.PaymentDialogFragment.SendPriceToPaymentFragment {
+public class MainActivity extends AppCompatActivity implements ActivityPlsGetPriceInterface, ActivityPlsClearCartInterface {
 
     private TextView mToolbarTitleTextView;
     private Button mToolbarButton;
@@ -47,19 +50,20 @@ public class MainActivity extends AppCompatActivity implements victorcruz.dms.pa
         mToolbarButton = (Button) findViewById(R.id.toolbar_button);
     }
 
-    public interface GetCartPrice {
-        int getPrice();
+    @Override
+    public void ActivityPlsClearCart() {
+        mCartFragment.CartFragmentPlsClearCart();
     }
 
     @Override
-    public int sendPrice() {
-        GetCartPrice getCartPrice = mCartFragment;
-        return getCartPrice.getPrice();
+    public int ActivityPlsGetPrice() {
+        return mCartFragment.CartFragmentPlsGetPrice();
     }
 
     public void showPaymentDialog(View view){
-        paymentDialogFragment.show(mFragmentManager, null);
-
+        if (mCartFragment.CartFragmentPlsGetPrice() > 0){
+            paymentDialogFragment.show(mFragmentManager, null);
+        } else Toast.makeText(this, "Carrinho Vazio", Toast.LENGTH_SHORT).show();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

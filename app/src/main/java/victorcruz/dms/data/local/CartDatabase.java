@@ -33,18 +33,7 @@ public class CartDatabase {
                 "VALUES ('" + product.getTitle() + "','" + product.getPrice() + "','" + product.getSeller() + "','" + product.getThumbnail() + "')");
     }
 
-    public void resetCartTable(){
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS cart");
-        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS cart (id INTEGER PRIMARY KEY, title TEXT, value INTEGER(7), seller TEXT, thumbnail TEXT)");
-    }
-
     public void removeItemFromCart(Product product){
         sqLiteDatabase.execSQL("DELETE FROM cart WHERE id IN (SELECT id FROM cart WHERE title = '" + product.getTitle() + "' LIMIT 1)");
     }
-
-
-    /*public long getCartSize(){
-        return DatabaseUtils.queryNumEntries(sqLiteDatabase, "cart");
-    }*/
-
 }

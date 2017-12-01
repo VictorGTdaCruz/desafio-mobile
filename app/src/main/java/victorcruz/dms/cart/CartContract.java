@@ -18,7 +18,9 @@ public interface CartContract {
 
         void saveProductsOfCart(ArrayList<Product> mProductsList);
 
-    }
+        int getCartPrice(ArrayList<Product> mProductsList);
+
+        }
 
     interface CallbackDeleteItemFromCart{
 

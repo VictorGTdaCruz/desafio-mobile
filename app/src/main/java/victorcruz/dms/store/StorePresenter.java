@@ -35,7 +35,7 @@ public class StorePresenter implements StoreContract.Presenter, StoreContract.Ca
 
     @Override
     public void onError(Exception e) {
-
+        mStoreView.warningJsonError();
     }
 
     @Override
@@ -64,7 +64,7 @@ public class StorePresenter implements StoreContract.Presenter, StoreContract.Ca
             mStoreView.setItens(mProductList);
 
         } catch (JSONException e) {
-            // metodo de erro
+            mStoreView.warningJsonError();
             e.printStackTrace();
         }
     }

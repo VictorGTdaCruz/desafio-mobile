@@ -3,6 +3,9 @@ package victorcruz.dms.paymentDialog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import victorcruz.dms.data.Transaction;
 import victorcruz.dms.data.local.TransactionDatabase;
 import victorcruz.dms.data.remote.PaymentService;
@@ -38,8 +41,10 @@ public class PaymentPresenter implements PaymentContract.Presenter{
             e.printStackTrace();
         }
 
-        // registrar data certa
-        registerTransaction(new Transaction(value, mCardName, mCardNumber, mCVV, mExpDate));
+        SimpleDateFormat formatter = new SimpleDateFormat("kk:mm dd/MM/yyyy");
+        String result = formatter.format(Calendar.getInstance().getTime());
+
+        registerTransaction(new Transaction(value, mCardName, mCardNumber, mCVV, mExpDate, result));
         mPaymentService.postJson(jsonObject.toString());
     }
 

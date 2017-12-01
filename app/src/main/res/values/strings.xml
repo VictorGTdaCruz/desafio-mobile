@@ -13,6 +13,8 @@
     <string name="mValue">Valor</string>
     <string name="confirm_payment">Finalizar</string>
     <string name="cancel_payment">Cancelar</string>
+    <string name="store_loading_text_view">Carregando loja…</string>
+    <string name="store_error_text_view">Ops, houve um problema ao carregar a loja :(</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

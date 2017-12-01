@@ -24,7 +24,7 @@ public class ProductStoreAdapter extends BaseAdapter {
 
     private StoreContract.CallbackAddItemToCart callbackAddItemToCart;
 
-    public ProductStoreAdapter(ArrayList<Product> mProductsList, StoreContract.CallbackAddItemToCart callbackAddItemToCart){
+    ProductStoreAdapter(ArrayList<Product> mProductsList, StoreContract.CallbackAddItemToCart callbackAddItemToCart){
         this.mProductsList = mProductsList;
         this.callbackAddItemToCart = callbackAddItemToCart;
     }

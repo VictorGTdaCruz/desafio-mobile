@@ -1,8 +1,5 @@
 package victorcruz.dms.data;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 public class Transaction {
 
     private int mValue;
@@ -12,15 +9,13 @@ public class Transaction {
     private String mCardDate;
     private String mTransactionDate;
 
-    public Transaction(int mValue, String mCardName, String mCardNumber, String mCvv, String mCardDate) {
+    public Transaction(int mValue, String mCardName, String mCardNumber, String mCvv, String mCardDate, String mTransactionDate) {
         this.mValue = mValue;
         this.mCardName = mCardName;
+        this.mCvv = mCvv;
         this.mCardNumber = mCardNumber;
         this.mCardDate = mCardDate;
-
-        SimpleDateFormat formatter = new SimpleDateFormat("kk:mm dd/MM/yyyy");
-        String result = formatter.format(Calendar.getInstance().getTime());
-        this.mTransactionDate = result;
+        this.mTransactionDate = mTransactionDate;
     }
 
     public int getValue() {

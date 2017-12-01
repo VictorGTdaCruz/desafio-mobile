@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,14 +19,14 @@ public class TransactionFragment extends Fragment implements TransactionContract
     private TransactionContract.Presenter mPresenter;
 
     private ListView mTransactionListView;
+    private TextView mEmptyTransactionTextView;
 
     public TransactionFragment() {
         // Required empty public constructor
     }
 
     public static TransactionFragment newInstance() {
-        TransactionFragment fragment = new TransactionFragment();
-        return fragment;
+        return new TransactionFragment();
     }
 
     @Override
@@ -40,6 +41,7 @@ public class TransactionFragment extends Fragment implements TransactionContract
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_transaction, container, false);
         mTransactionListView = (ListView) root.findViewById(R.id.transaction_list_view);
+        mEmptyTransactionTextView = (TextView) root.findViewById(R.id.empty_transaction_text_view);
         return root;
     }
 
@@ -51,7 +53,10 @@ public class TransactionFragment extends Fragment implements TransactionContract
 
     @Override
     public void setItens(ArrayList<Transaction> mTransactionList) {
-        TransactionAdapter mTransactionAdapter = new TransactionAdapter(mTransactionList, this);
-        mTransactionListView.setAdapter(mTransactionAdapter);
+        if (mTransactionList.size() > 0){
+            mEmptyTransactionTextView.setVisibility(View.INVISIBLE);
+            TransactionAdapter mTransactionAdapter = new TransactionAdapter(mTransactionList, this);
+            mTransactionListView.setAdapter(mTransactionAdapter);
+        }
     }
 }
