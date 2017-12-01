@@ -1,4 +1,4 @@
-package victorcruz.dms.transaction;
+package victorcruz.dms.transactions;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import victorcruz.dms.R;
+import victorcruz.dms.data.Transaction;
 
 public class TransactionFragment extends Fragment implements TransactionContract.View{
 

@@ -5,12 +5,12 @@
     <string name="title_notifications">Notifications</string>
 
     <!-- Dialog de pagamento -->
-    <string name="finish_payment"><s>Finalizar pagamento</s></string>
+    <string name="finish_payment"><s>Finalizar pagamento no valor de</s></string>
     <string name="cart_number">XXXX XXXX XXXX XXXX</string>
     <string name="cart_name">Nome</string>
     <string name="cart_exp_date">Vencimento</string>
     <string name="cart_cvv">CVV</string>
-    <string name="value">Valor</string>
+    <string name="mValue">Valor</string>
     <string name="confirm_payment">Finalizar</string>
     <string name="cancel_payment">Cancelar</string>
 

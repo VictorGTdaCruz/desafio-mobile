@@ -1,17 +1,4 @@
-package victorcruz.dms.transaction;
-
-import android.app.Activity;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.widget.ListView;
-
-import org.json.JSONObject;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+package victorcruz.dms.transactions;
 
 public class TransactionsHandler {
 /*

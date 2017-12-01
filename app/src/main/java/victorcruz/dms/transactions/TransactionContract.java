@@ -1,6 +1,8 @@
-package victorcruz.dms.transaction;
+package victorcruz.dms.transactions;
 
 import java.util.ArrayList;
+
+import victorcruz.dms.data.Transaction;
 
 public interface TransactionContract {
 

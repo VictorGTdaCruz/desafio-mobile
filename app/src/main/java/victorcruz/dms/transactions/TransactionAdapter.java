@@ -1,4 +1,4 @@
-package victorcruz.dms.transaction;
+package victorcruz.dms.transactions;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import victorcruz.dms.R;
+import victorcruz.dms.data.Transaction;
 import victorcruz.dms.util.CardFromatter;
 import victorcruz.dms.util.CurrencyFormatter;
 import victorcruz.dms.util.DateFormatter;
@@ -65,8 +66,8 @@ public class TransactionAdapter extends BaseAdapter{
 
         cardNumber.setText(CardFromatter.formatCard(transaction.getCardNumber()));
 
-        hour.setText(DateFormatter.formatHour(transaction.getDate()));
-        date.setText(DateFormatter.formatDate(transaction.getDate()));
+        hour.setText(DateFormatter.formatHour(mTransactionList.get(position).getTransactionDate()));
+        date.setText(DateFormatter.formatDate(mTransactionList.get(position).getTransactionDate()));
 
         return view;
     }

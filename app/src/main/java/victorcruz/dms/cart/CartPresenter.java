@@ -69,4 +69,13 @@ public class CartPresenter implements CartContract.Presenter{
         cursor.close();
         return mProductList;
     }
+
+    public int getCartPrice(ArrayList<Product> mProductsList){
+        int value = 0;
+        for (int i = 0; i < mProductsList.size(); i++){
+            value = value + mProductsList.get(i).getPrice();
+        }
+        return value;
+    }
+
 }

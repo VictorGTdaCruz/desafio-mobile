@@ -10,8 +10,8 @@ Para obter os itens da loja, sua aplicação deverá realizar uma chamada `GET` 
 
 A lista de itens deve exibir as seguintes informações:
 + Nome [mTitle]
-+ Preço [value]
-+ Vendedor [cardNumber]
++ Preço [mValue]
++ Vendedor [mCardNumber]
 + Foto do item [thumbnailHd]
 
 Após o usuário adicionar todos os itens no carrinho, ele deverá finalizar a compra.
@@ -29,8 +29,8 @@ Sua aplicação deve realizar um `POST` com os seguintes atributos:
 ``` json
 {  
    "card_number":"1234123412341234",
-   "value":7990,
-   "cvv":789,
+   "mValue":7990,
+   "mCvv":789,
    "card_holder_name":"Luke Skywalker",
    "exp_date":"12/24"
 }

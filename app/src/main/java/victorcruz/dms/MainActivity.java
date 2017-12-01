@@ -6,23 +6,27 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import victorcruz.dms.cart.CartFragment;
-import victorcruz.dms.data.local.CartDatabase;
+import victorcruz.dms.paymentDialog.PaymentDialogFragment;
 import victorcruz.dms.store.StoreFragment;
-import victorcruz.dms.transaction.TransactionFragment;
+import victorcruz.dms.transactions.TransactionFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements victorcruz.dms.paymentDialog.PaymentDialogFragment.SendPriceToPaymentFragment {
 
-    private TextView ToolbarTitleTextView;
+    private TextView mToolbarTitleTextView;
+    private Button mToolbarButton;
 
     private StoreFragment mStoreFragment;
     private CartFragment mCartFragment;
     private TransactionFragment mTransactionFragment;
+    PaymentDialogFragment paymentDialogFragment;
+
 
     private FragmentManager mFragmentManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,23 +40,27 @@ public class MainActivity extends AppCompatActivity {
         mStoreFragment = StoreFragment.newInstance();
         mCartFragment = CartFragment.newInstance();
         mTransactionFragment = TransactionFragment.newInstance();
+        paymentDialogFragment = PaymentDialogFragment.newInstance();
         mFragmentManager.beginTransaction().add(R.id.fragment_container_layout, mStoreFragment).commit();
-        ToolbarTitleTextView = (TextView) findViewById(R.id.toolbarTitleTextView);
 
+        mToolbarTitleTextView = (TextView) findViewById(R.id.toolbarTitleTextView);
+        mToolbarButton = (Button) findViewById(R.id.toolbar_button);
     }
 
-    /*public void showPaymentDialog(View view){
+    public interface GetCartPrice {
+        int getPrice();
+    }
 
-        if(productHandler.getCartTotalValue() == 0){
-            Toast.makeText(this, "O seu carrinho está vazio!", Toast.LENGTH_SHORT).show();
-        } else {
-            //PaymentDialogFragment paymentDialogFragment = PaymentDialogFragment.newInstance(null);
-            PaymentDialogFragment paymentDialogFragment = new PaymentDialogFragment();
-            paymentDialogFragment.setArguments(productHandler, transactionsHandler);
-            paymentDialogFragment.show(getSupportFragmentManager(), null);
-        }
+    @Override
+    public int sendPrice() {
+        GetCartPrice getCartPrice = mCartFragment;
+        return getCartPrice.getPrice();
+    }
 
-    }*/
+    public void showPaymentDialog(View view){
+        paymentDialogFragment.show(mFragmentManager, null);
+
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -61,15 +69,18 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_store:
-                    ToolbarTitleTextView.setText("Loja");
+                    mToolbarTitleTextView.setText("Loja");
+                    mToolbarButton.setVisibility(View.INVISIBLE);
                     mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mStoreFragment).commit();
                     return true;
                 case R.id.navigation_cart:
-                    ToolbarTitleTextView.setText("Carrinho");
+                    mToolbarTitleTextView.setText("Carrinho");
+                    mToolbarButton.setVisibility(View.VISIBLE);
                     mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mCartFragment).commit();
                     return true;
                 case R.id.navigation_transactions:
-                    ToolbarTitleTextView.setText("Transações");
+                    mToolbarTitleTextView.setText("Transações");
+                    mToolbarButton.setVisibility(View.INVISIBLE);
                     mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mTransactionFragment).commit();
                     return true;
             }

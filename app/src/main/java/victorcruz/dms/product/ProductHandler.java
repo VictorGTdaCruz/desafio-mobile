@@ -10,7 +10,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import victorcruz.dms.R;
-import victorcruz.dms.UI.ExpandableHeightListView;
 import victorcruz.dms.data.Product;
 import victorcruz.dms.store.ProductStoreAdapter;
 
@@ -23,7 +22,7 @@ public class ProductHandler {
     private ArrayList<Product> productsCart;
     private ProductCartAdapter productsCartAdapter;
 
-    private ExpandableHeightListView storeListView;
+    /*private ExpandableHeightListView storeListView;
     private ExpandableHeightListView cartListView;
 
     private TextView cartTotalValueTextView;
@@ -172,6 +171,6 @@ public class ProductHandler {
 
     public ArrayList<Product> getProductsStore() {
         return productsStore;
-    }
+    }*/
 
 }

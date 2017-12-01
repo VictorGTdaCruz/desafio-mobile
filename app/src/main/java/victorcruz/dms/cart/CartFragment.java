@@ -9,10 +9,11 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import victorcruz.dms.MainActivity;
 import victorcruz.dms.R;
 import victorcruz.dms.data.Product;
 
-public class CartFragment extends Fragment implements CartContract.View, CartContract.CallbackDeleteItemFromCart{
+public class CartFragment extends Fragment implements CartContract.View, CartContract.CallbackDeleteItemFromCart, MainActivity.GetCartPrice {
 
     private CartPresenter mCartPresenter;
 
@@ -72,4 +73,8 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
         mProductCartAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public int getPrice() {
+        return mCartPresenter.getCartPrice(mProductsList);
+    }
 }
