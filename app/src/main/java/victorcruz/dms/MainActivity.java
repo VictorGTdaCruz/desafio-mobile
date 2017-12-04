@@ -15,10 +15,10 @@ import victorcruz.dms.cart.CartFragment;
 import victorcruz.dms.paymentDialog.PaymentDialogFragment;
 import victorcruz.dms.store.StoreFragment;
 import victorcruz.dms.transactions.TransactionFragment;
-import victorcruz.dms.CartFragmentAndPaymentFragmentContract.ActivityPlsClearCartInterface;
-import victorcruz.dms.CartFragmentAndPaymentFragmentContract.ActivityPlsGetPriceInterface;
+import victorcruz.dms.CartFragmentAndPaymentFragmentContract.ClearCartInterface;
+import victorcruz.dms.CartFragmentAndPaymentFragmentContract.GetPriceInterface;
 
-public class MainActivity extends AppCompatActivity implements ActivityPlsGetPriceInterface, ActivityPlsClearCartInterface {
+public class MainActivity extends AppCompatActivity implements GetPriceInterface, ClearCartInterface {
 
 
 
@@ -53,17 +53,17 @@ public class MainActivity extends AppCompatActivity implements ActivityPlsGetPri
     }
 
     @Override
-    public void activityPlsClearCart() {
-        mCartFragment.cartFragmentPlsClearCart();
+    public void clearCart() {
+        mCartFragment.clearCart();
     }
 
     @Override
-    public int activityPlsGetPrice() {
-        return mCartFragment.cartFragmentPlsGetPrice();
+    public int getPrice() {
+        return mCartFragment.getPrice();
     }
 
     public void showPaymentDialog(View view){
-        if (mCartFragment.cartFragmentPlsGetPrice() > 0){
+        if (mCartFragment.getPrice() > 0){
             paymentDialogFragment.show(mFragmentManager, null);
         } else Toast.makeText(this, "Carrinho Vazio", Toast.LENGTH_SHORT).show();
     }

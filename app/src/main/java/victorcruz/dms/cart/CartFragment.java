@@ -15,7 +15,7 @@ import victorcruz.dms.R;
 import victorcruz.dms.data.Product;
 
 public class CartFragment extends Fragment implements CartContract.View, CartContract.CallbackDeleteItemFromCart,
-        CartFragmentAndPaymentFragmentContract.CartFragmentPlsGetPriceInterface, CartFragmentAndPaymentFragmentContract.CartFragmentPlsClearCartInterface {
+        CartFragmentAndPaymentFragmentContract.GetPriceInterface, CartFragmentAndPaymentFragmentContract.ClearCartInterface {
 
     private CartPresenter mCartPresenter;
 
@@ -82,12 +82,12 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     }
 
     @Override
-    public int cartFragmentPlsGetPrice() {
+    public int getPrice() {
         return mCartPresenter.getCartPrice(mProductsList);
     }
 
     @Override
-    public void cartFragmentPlsClearCart() {
+    public void clearCart() {
         int mSizeBeforePayment = mProductsList.size();
         for (int i = 0; i < mSizeBeforePayment; i++) {
             mProductsList.remove(0);
