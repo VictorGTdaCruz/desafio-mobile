@@ -53,7 +53,7 @@ public class TransactionFragment extends Fragment implements TransactionContract
 
     @Override
     public void setItens(ArrayList<Transaction> mTransactionList) {
-        TransactionAdapter mTransactionAdapter = new TransactionAdapter(mTransactionList);
+        TransactionAdapter mTransactionAdapter = new TransactionAdapter(getContext(), mTransactionList);
         mTransactionListView.setAdapter(mTransactionAdapter);
     }
 }

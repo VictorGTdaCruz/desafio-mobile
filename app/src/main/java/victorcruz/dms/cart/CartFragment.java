@@ -67,7 +67,7 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     @Override
     public void setItems(ArrayList<Product> mProductsList) {
         this.mProductsList = mProductsList;
-        mProductCartAdapter = new ProductCartAdapter(mProductsList, this);
+        mProductCartAdapter = new ProductCartAdapter(getContext(), mProductsList, this);
         mCartListView.setAdapter(mProductCartAdapter);
     }
 

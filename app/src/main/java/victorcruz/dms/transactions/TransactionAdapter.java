@@ -1,5 +1,6 @@
 package victorcruz.dms.transactions;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +14,15 @@ import victorcruz.dms.data.Transaction;
 import victorcruz.dms.util.CardFromatter;
 import victorcruz.dms.util.CurrencyFormatter;
 import victorcruz.dms.util.DateFormatter;
-import victorcruz.dms.util.MyApplication;
 
 public class TransactionAdapter extends BaseAdapter{
 
     private ArrayList<Transaction> mTransactionList;
 
-    TransactionAdapter(ArrayList<Transaction> mTransactionList){
+    private Context mContext;
+
+    TransactionAdapter(Context mContext, ArrayList<Transaction> mTransactionList){
+        this.mContext = mContext;
         this.mTransactionList = mTransactionList;
     }
 
@@ -44,7 +47,7 @@ public class TransactionAdapter extends BaseAdapter{
         View view;
 
         if (convertView == null){
-            view = LayoutInflater.from(MyApplication.getAppContext()).inflate(R.layout.item_transaction, parent, false);
+            view = LayoutInflater.from(mContext).inflate(R.layout.item_transaction, parent, false);
         }else{
             view = convertView;
         }

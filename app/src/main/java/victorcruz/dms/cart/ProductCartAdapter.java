@@ -1,5 +1,6 @@
 package victorcruz.dms.cart;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import victorcruz.dms.data.Product;
 import victorcruz.dms.R;
 import victorcruz.dms.util.CurrencyFormatter;
-import victorcruz.dms.util.MyApplication;
 import victorcruz.dms.util.SellerFormatter;
 
 public class ProductCartAdapter extends BaseAdapter {
@@ -24,7 +24,10 @@ public class ProductCartAdapter extends BaseAdapter {
 
     private CartContract.CallbackDeleteItemFromCart callbackDeleteItemFromCart;
 
-    ProductCartAdapter(ArrayList<Product> mProductsList, CartContract.CallbackDeleteItemFromCart callbackDeleteItemFromCart){
+    private Context mContext;
+
+    ProductCartAdapter(Context mContext, ArrayList<Product> mProductsList, CartContract.CallbackDeleteItemFromCart callbackDeleteItemFromCart){
+        this.mContext = mContext;
         this.mProductsList = mProductsList;
         this.callbackDeleteItemFromCart = callbackDeleteItemFromCart;
     }
@@ -50,7 +53,7 @@ public class ProductCartAdapter extends BaseAdapter {
         View view;
 
         if (convertView == null){
-            view = LayoutInflater.from(MyApplication.getAppContext()).inflate(R.layout.item_cart, parent, false);
+            view = LayoutInflater.from(mContext).inflate(R.layout.item_cart, parent, false);
         }else{
             view = convertView;
         }
@@ -71,7 +74,7 @@ public class ProductCartAdapter extends BaseAdapter {
         TextView seller = (TextView) view.findViewById(R.id.seller);
         ImageView image = (ImageView) view.findViewById(R.id.image);
 
-        Picasso.with(MyApplication.getAppContext()).load(product.getThumbnail()).into(image);
+        Picasso.with(mContext).load(product.getThumbnail()).into(image);
 
         title.setText(product.getTitle());
 

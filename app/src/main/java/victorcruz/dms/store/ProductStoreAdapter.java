@@ -1,5 +1,6 @@
 package victorcruz.dms.store;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import victorcruz.dms.R;
 import victorcruz.dms.data.Product;
 import victorcruz.dms.util.CurrencyFormatter;
-import victorcruz.dms.util.MyApplication;
 import victorcruz.dms.util.SellerFormatter;
 
 public class ProductStoreAdapter extends BaseAdapter {
@@ -24,7 +24,10 @@ public class ProductStoreAdapter extends BaseAdapter {
 
     private StoreContract.CallbackAddItemToCart callbackAddItemToCart;
 
-    ProductStoreAdapter(ArrayList<Product> mProductsList, StoreContract.CallbackAddItemToCart callbackAddItemToCart){
+    private Context mContext;
+
+    ProductStoreAdapter(Context mContext, ArrayList<Product> mProductsList, StoreContract.CallbackAddItemToCart callbackAddItemToCart){
+        this.mContext = mContext;
         this.mProductsList = mProductsList;
         this.callbackAddItemToCart = callbackAddItemToCart;
     }
@@ -50,9 +53,7 @@ public class ProductStoreAdapter extends BaseAdapter {
         View view;
 
         if (convertView == null){
-            view = LayoutInflater.from(
-                    MyApplication.getAppContext()
-            ).inflate(R.layout.item_store, parent, false);
+            view = LayoutInflater.from(mContext).inflate(R.layout.item_store, parent, false);
         }else{
             view = convertView;
         }
@@ -73,7 +74,7 @@ public class ProductStoreAdapter extends BaseAdapter {
         TextView seller = (TextView) view.findViewById(R.id.seller);
         ImageView image = (ImageView) view.findViewById(R.id.image);
 
-        Picasso.with(MyApplication.getAppContext()).load(product.getThumbnail()).into(image);
+        Picasso.with(mContext).load(product.getThumbnail()).into(image);
 
         title.setText(product.getTitle());
 
