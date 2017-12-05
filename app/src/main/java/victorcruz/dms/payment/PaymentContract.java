@@ -1,4 +1,4 @@
-package victorcruz.dms.paymentDialog;
+package victorcruz.dms.payment;
 
 public interface PaymentContract {
 

@@ -1,4 +1,4 @@
-package victorcruz.dms.paymentDialog;
+package victorcruz.dms.payment;
 
 import org.json.JSONException;
 import org.json.JSONObject;

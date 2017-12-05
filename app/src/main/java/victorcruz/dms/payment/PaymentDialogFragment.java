@@ -1,4 +1,4 @@
-package victorcruz.dms.paymentDialog;
+package victorcruz.dms.payment;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -20,7 +20,6 @@ import victorcruz.dms.CartFragmentAndPaymentFragmentContract.GetPriceInterface;
 public class PaymentDialogFragment extends DialogFragment implements PaymentContract.View{
 
     private EditText cardNumberEditText, cardNameEditText, cardCVVEditText, cardExpDateEditText;
-    private TextView mValue_text_view;
 
     private GetPriceInterface mGetPriceInterface;
     private ClearCartInterface mClearCartInterface;
@@ -53,7 +52,7 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
         View view = inflater.inflate(R.layout.fragment_payment, null);
 
         // faz o valor no topo do fragmento
-        mValue_text_view = (TextView) view.findViewById(R.id.value_text_view);
+        TextView mValue_text_view = (TextView) view.findViewById(R.id.value_text_view);
         final int value = mGetPriceInterface.getPrice();
         mValue_text_view.setText(CurrencyFormatter.formatPrice(value));
 

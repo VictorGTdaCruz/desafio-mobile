@@ -17,15 +17,6 @@ public class Product {
         this.mDate = mDate;
     }
 
-    public Product(Product product) {
-        this.mTitle = product.getTitle();
-        this.mPrice = product.getPrice();
-        this.mZipcode = product.getZipcode();
-        this.mSeller = product.getSeller();
-        this.mThumbnail = product.mThumbnail;
-        this.mDate = product.getDate();
-    }
-
     public String getTitle() {
         return mTitle;
     }
@@ -48,9 +39,5 @@ public class Product {
 
     public String getDate() {
         return mDate;
-    }
-
-    public void setDate(String mDate) {
-        this.mDate = mDate;
     }
 }

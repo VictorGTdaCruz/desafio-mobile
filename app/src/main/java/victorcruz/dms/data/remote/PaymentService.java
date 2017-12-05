@@ -4,7 +4,7 @@ import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import victorcruz.dms.paymentDialog.PaymentContract;
+import victorcruz.dms.payment.PaymentContract;
 
 public class PaymentService implements PaymentContract.Service{
 

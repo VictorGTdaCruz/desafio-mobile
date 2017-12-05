@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import victorcruz.dms.cart.CartFragment;
-import victorcruz.dms.paymentDialog.PaymentDialogFragment;
+import victorcruz.dms.payment.PaymentDialogFragment;
 import victorcruz.dms.store.StoreFragment;
 import victorcruz.dms.transactions.TransactionFragment;
 import victorcruz.dms.CartFragmentAndPaymentFragmentContract.ClearCartInterface;
@@ -20,15 +20,13 @@ import victorcruz.dms.CartFragmentAndPaymentFragmentContract.GetPriceInterface;
 
 public class MainActivity extends AppCompatActivity implements GetPriceInterface, ClearCartInterface {
 
-
-
     private TextView mToolbarTitleTextView;
     private Button mToolbarButton;
 
     private StoreFragment mStoreFragment;
     private CartFragment mCartFragment;
     private TransactionFragment mTransactionFragment;
-    PaymentDialogFragment paymentDialogFragment;
+    private PaymentDialogFragment paymentDialogFragment;
 
 
     private FragmentManager mFragmentManager;
