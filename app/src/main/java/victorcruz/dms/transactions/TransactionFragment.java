@@ -19,7 +19,6 @@ public class TransactionFragment extends Fragment implements TransactionContract
     private TransactionContract.Presenter mPresenter;
 
     private ListView mTransactionListView;
-    private TextView mEmptyTransactionTextView;
 
     public TransactionFragment() {
         // Required empty public constructor
@@ -39,10 +38,11 @@ public class TransactionFragment extends Fragment implements TransactionContract
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_transaction, container, false);
-        mTransactionListView = (ListView) root.findViewById(R.id.transaction_list_view);
-        mEmptyTransactionTextView = (TextView) root.findViewById(R.id.empty_transaction_text_view);
-        return root;
+        View view = inflater.inflate(R.layout.fragment_transaction, container, false);
+        mTransactionListView = (ListView) view.findViewById(R.id.transaction_list_view);
+        TextView mEmptyTransactionTextView = (TextView) view.findViewById(R.id.empty_transaction_text_view);
+        mTransactionListView.setEmptyView(mEmptyTransactionTextView);
+        return view;
     }
 
     @Override
@@ -53,10 +53,7 @@ public class TransactionFragment extends Fragment implements TransactionContract
 
     @Override
     public void setItens(ArrayList<Transaction> mTransactionList) {
-        if (mTransactionList.size() > 0){
-            mEmptyTransactionTextView.setVisibility(View.INVISIBLE);
-            TransactionAdapter mTransactionAdapter = new TransactionAdapter(mTransactionList);
-            mTransactionListView.setAdapter(mTransactionAdapter);
-        }
+        TransactionAdapter mTransactionAdapter = new TransactionAdapter(mTransactionList);
+        mTransactionListView.setAdapter(mTransactionAdapter);
     }
 }

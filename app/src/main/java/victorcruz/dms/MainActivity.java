@@ -3,7 +3,9 @@ package victorcruz.dms;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,7 +65,9 @@ public class MainActivity extends AppCompatActivity implements GetPriceInterface
     public void showPaymentDialog(View view){
         if (mCartFragment.getPrice() > 0){
             paymentDialogFragment.show(mFragmentManager, null);
-        } else Toast.makeText(this, "Carrinho Vazio", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Carrinho Vazio", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -71,24 +75,32 @@ public class MainActivity extends AppCompatActivity implements GetPriceInterface
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            FragmentTransaction transaction = mFragmentManager.beginTransaction();
+            Fragment fragment = null;
+
             switch (item.getItemId()) {
                 case R.id.navigation_store:
                     mToolbarTitleTextView.setText(R.string.toolbar_store);
                     mToolbarButton.setVisibility(View.INVISIBLE);
-                    mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mStoreFragment).commit();
-                    return true;
+                    fragment = StoreFragment.newInstance();
+                    break;
                 case R.id.navigation_cart:
                     mToolbarTitleTextView.setText(R.string.toolbar_cart);
                     mToolbarButton.setVisibility(View.VISIBLE);
-                    mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mCartFragment).commit();
-                    return true;
+                    fragment = CartFragment.newInstance();
+                    break;
                 case R.id.navigation_transactions:
                     mToolbarTitleTextView.setText(R.string.toolbar_transactions);
                     mToolbarButton.setVisibility(View.INVISIBLE);
-                    mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mTransactionFragment).commit();
-                    return true;
+                    fragment = TransactionFragment.newInstance();
+                    break;
+                    //mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mTransactionFragment).commit();
+                    //return true;
             }
-            return false;
+
+            transaction.replace(R.id.fragment_container_layout, fragment).commit();
+            return true;
         }
 
     };

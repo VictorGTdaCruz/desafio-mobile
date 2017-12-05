@@ -43,11 +43,12 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_store, container, false);
-        mStoreListView = (ListView) root.findViewById(R.id.store_list_view);
-        mEmptyStoreTextView = (TextView) root.findViewById(R.id.empty_store_text_view);
+        View view = inflater.inflate(R.layout.fragment_store, container, false);
+        mStoreListView = (ListView) view.findViewById(R.id.store_list_view);
+        mEmptyStoreTextView = (TextView) view.findViewById(R.id.empty_store_text_view);
         mEmptyStoreTextView.setText(R.string.store_loading_text_view);
-        return root;
+        mStoreListView.setEmptyView(mEmptyStoreTextView);
+        return view;
     }
 
     @Override
@@ -70,7 +71,6 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
     }
 
     public void setmProductsList(ArrayList<Product> mProductsList){
-        mEmptyStoreTextView.setVisibility(View.INVISIBLE);
         this.mProductsList = mProductsList;
     }
 

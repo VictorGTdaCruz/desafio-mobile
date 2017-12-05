@@ -20,7 +20,6 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     private CartPresenter mCartPresenter;
 
     private ListView mCartListView;
-    private TextView mEmptyCartTextView;
 
     private ProductCartAdapter mProductCartAdapter;
 
@@ -46,10 +45,11 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_cart, container, false);
-        mCartListView = (ListView) root.findViewById(R.id.cart_list_view);
-        mEmptyCartTextView = (TextView) root.findViewById(R.id.empty_cart_text_view);
-        return root;
+        View view = inflater.inflate(R.layout.fragment_cart, container, false);
+        mCartListView = (ListView) view.findViewById(R.id.cart_list_view);
+        TextView mEmptyCartTextView = (TextView) view.findViewById(R.id.empty_cart_text_view);
+        mCartListView.setEmptyView(mEmptyCartTextView);
+        return view;
     }
 
     @Override
@@ -67,18 +67,14 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     @Override
     public void setItems(ArrayList<Product> mProductsList) {
         this.mProductsList = mProductsList;
-        if (mProductsList.size() != 0){
-            mEmptyCartTextView.setVisibility(View.INVISIBLE);
-            mProductCartAdapter = new ProductCartAdapter(mProductsList, this);
-            mCartListView.setAdapter(mProductCartAdapter);
-        }
+        mProductCartAdapter = new ProductCartAdapter(mProductsList, this);
+        mCartListView.setAdapter(mProductCartAdapter);
     }
 
     @Override
     public void deleteItemFromCart(int position) {
         mProductsList.remove(position);
         mProductCartAdapter.notifyDataSetChanged();
-        if (mProductsList.size() == 0) mEmptyCartTextView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -93,6 +89,5 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
             mProductsList.remove(0);
         }
         mProductCartAdapter.notifyDataSetChanged();
-        if (mProductsList.size() == 0) mEmptyCartTextView.setVisibility(View.VISIBLE);
     }
 }
