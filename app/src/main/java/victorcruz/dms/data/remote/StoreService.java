@@ -9,6 +9,8 @@ import victorcruz.dms.store.StoreContract;
 
 public class StoreService implements StoreContract.Service {
 
+    private final String mURLString = "https://raw.githubusercontent.com/stone-pagamentos/desafio-mobile/master/products.json";
+
     private final StoreContract.Presenter mStorePresenter;
 
     public StoreService(StoreContract.Presenter mStorePresenter){
@@ -28,7 +30,7 @@ public class StoreService implements StoreContract.Service {
                     StringBuilder JSONString = new StringBuilder();
 
                     // InputStream vai receber os bytes e decodificar em char e salvar em result
-                    URL url = new URL("https://raw.githubusercontent.com/stone-pagamentos/desafio-mobile/master/products.json");
+                    URL url = new URL(mURLString);
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     InputStream inputStream = httpURLConnection.getInputStream();
                     InputStreamReader inputStreamReader = new InputStreamReader(inputStream);

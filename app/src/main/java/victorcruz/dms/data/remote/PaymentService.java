@@ -8,6 +8,8 @@ import victorcruz.dms.payment.PaymentContract;
 
 public class PaymentService implements PaymentContract.Service{
 
+    private final String mURLString = "http://private-2ac02-desafiomobile2.apiary-mock.com/transactions";
+
     private final PaymentContract.Presenter mPaymentPresenter;
 
     public PaymentService(PaymentContract.Presenter mPaymentPresenter){
@@ -25,7 +27,7 @@ public class PaymentService implements PaymentContract.Service{
                 try {
 
                     // conecta na url recebida e configura o request
-                    URL url = new URL("http://private-2ac02-desafiomobile2.apiary-mock.com/transactions");
+                    URL url = new URL(mURLString);
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setRequestProperty("Content-Type", "application/json");
