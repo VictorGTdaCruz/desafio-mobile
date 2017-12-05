@@ -18,7 +18,7 @@ public class StorePresenter implements StoreContract.Presenter, StoreContract.Ca
     //referencia para a camada service
     private StoreContract.Service mStoreService;
 
-    public StorePresenter(StoreContract.View storeView){
+    StorePresenter(StoreContract.View storeView){
         this.mStoreView = storeView;
         mStoreService = new StoreService(this);
     }

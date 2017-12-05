@@ -73,17 +73,17 @@ public class MainActivity extends AppCompatActivity implements GetPriceInterface
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_store:
-                    mToolbarTitleTextView.setText("Loja");
+                    mToolbarTitleTextView.setText(R.string.toolbar_store);
                     mToolbarButton.setVisibility(View.INVISIBLE);
                     mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mStoreFragment).commit();
                     return true;
                 case R.id.navigation_cart:
-                    mToolbarTitleTextView.setText("Carrinho");
+                    mToolbarTitleTextView.setText(R.string.toolbar_cart);
                     mToolbarButton.setVisibility(View.VISIBLE);
                     mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mCartFragment).commit();
                     return true;
                 case R.id.navigation_transactions:
-                    mToolbarTitleTextView.setText("Transações");
+                    mToolbarTitleTextView.setText(R.string.toolbar_transactions);
                     mToolbarButton.setVisibility(View.INVISIBLE);
                     mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mTransactionFragment).commit();
                     return true;

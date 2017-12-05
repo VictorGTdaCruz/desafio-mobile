@@ -19,9 +19,8 @@ public class TransactionAdapter extends BaseAdapter{
 
     private ArrayList<Transaction> mTransactionList;
 
-    TransactionAdapter(ArrayList<Transaction> mTransactionList, TransactionContract.View mTransactionFragment){
+    TransactionAdapter(ArrayList<Transaction> mTransactionList){
         this.mTransactionList = mTransactionList;
-        TransactionContract.View mTransactionFragment1 = mTransactionFragment;
     }
 
     @Override

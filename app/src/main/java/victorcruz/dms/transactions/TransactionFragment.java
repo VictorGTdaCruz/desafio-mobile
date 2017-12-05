@@ -55,7 +55,7 @@ public class TransactionFragment extends Fragment implements TransactionContract
     public void setItens(ArrayList<Transaction> mTransactionList) {
         if (mTransactionList.size() > 0){
             mEmptyTransactionTextView.setVisibility(View.INVISIBLE);
-            TransactionAdapter mTransactionAdapter = new TransactionAdapter(mTransactionList, this);
+            TransactionAdapter mTransactionAdapter = new TransactionAdapter(mTransactionList);
             mTransactionListView.setAdapter(mTransactionAdapter);
         }
     }

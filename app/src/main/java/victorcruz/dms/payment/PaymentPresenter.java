@@ -20,7 +20,7 @@ public class PaymentPresenter implements PaymentContract.Presenter{
 
     private TransactionDatabase mTransactionDatabase;
 
-    public PaymentPresenter(PaymentContract.View mPaymentView){
+    PaymentPresenter(PaymentContract.View mPaymentView){
         this.mPaymentView = mPaymentView;
         mPaymentService = new PaymentService(this);
         mTransactionDatabase = TransactionDatabase.getInstance();
@@ -48,7 +48,7 @@ public class PaymentPresenter implements PaymentContract.Presenter{
         mPaymentService.postJson(jsonObject.toString());
     }
 
-    public void registerTransaction(Transaction transaction) {
+    private void registerTransaction(Transaction transaction) {
         mTransactionDatabase.addItemToTransactions(transaction);
     }
 

@@ -12,13 +12,13 @@ public class CartPresenter implements CartContract.Presenter{
     //referencia para a camada view
     private CartContract.View mCartFragment;
 
-    public CartPresenter(CartContract.View mCartFragment){
+    CartPresenter(CartContract.View mCartFragment){
         this.mCartFragment = mCartFragment;
     }
 
     @Override
     public void getProductsOnCart() {
-        mCartFragment.setItens(cursorToArrayList(CartDatabase.getInstance().getCartItens()));
+        mCartFragment.setItems(cursorToArrayList(CartDatabase.getInstance().getCartItens()));
     }
 
     @Override

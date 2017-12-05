@@ -65,7 +65,7 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     }
 
     @Override
-    public void setItens(ArrayList<Product> mProductsList) {
+    public void setItems(ArrayList<Product> mProductsList) {
         this.mProductsList = mProductsList;
         if (mProductsList.size() != 0){
             mEmptyCartTextView.setVisibility(View.INVISIBLE);

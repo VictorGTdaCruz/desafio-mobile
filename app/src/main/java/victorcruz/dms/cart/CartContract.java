@@ -8,7 +8,7 @@ public interface CartContract {
 
     interface View {
 
-        void setItens(ArrayList<Product> mProductsList);
+        void setItems(ArrayList<Product> mProductsList);
 
     }
 
@@ -27,5 +27,4 @@ public interface CartContract {
         void deleteItemFromCart(int position);
 
     }
-
 }

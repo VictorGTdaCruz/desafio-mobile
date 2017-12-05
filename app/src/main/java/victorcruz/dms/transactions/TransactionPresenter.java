@@ -18,8 +18,7 @@ public class TransactionPresenter implements TransactionContract.Presenter{
     @Override
     public void getTransactionsList() {
         TransactionDatabase mTransactionDatabase = TransactionDatabase.getInstance();
-        ArrayList<Transaction> mTransactionList = new ArrayList<>(mTransactionDatabase.getTransactionDbSize());
-        mTransactionList = cursorToArrayList(mTransactionDatabase.getTransactionList());
+        ArrayList<Transaction> mTransactionList = cursorToArrayList(mTransactionDatabase.getTransactionList());
         mTransactionFragment.setItens(mTransactionList);
     }
 
