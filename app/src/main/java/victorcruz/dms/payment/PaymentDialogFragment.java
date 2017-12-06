@@ -63,9 +63,9 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
         cardCVVEditText = (EditText)  view.findViewById(R.id.cardCVVEditText);
         cardExpDateEditText = (EditText)  view.findViewById(R.id.cardExpDateEditText);
 
-        builder.setMessage(R.string.finish_payment)
+        builder.setMessage(R.string.payment_confirm)
                 .setView(view)
-                .setPositiveButton(R.string.confirm_payment, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.payment_confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                         String mCardNumber = cardNumberEditText.getText().toString();
@@ -77,7 +77,7 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
 
                     }
                 })
-                .setNegativeButton(R.string.cancel_payment, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.payment_cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                     }

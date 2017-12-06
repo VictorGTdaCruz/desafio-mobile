@@ -4,17 +4,24 @@
     android:layout_height="match_parent"
     tools:context="victorcruz.dms.store.StoreFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-        android:id="@+id/empty_store_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:text="Carregando loja..." />
-
-    <ListView
-        android:id="@+id/store_list_view"
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/store_coordinator_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/empty_store_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:text="@string/store_loading_text_view" />
+
+        <ListView
+            android:id="@+id/store_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </android.support.design.widget.CoordinatorLayout>
+
 </FrameLayout>

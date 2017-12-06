@@ -1,6 +1,8 @@
 package victorcruz.dms.cart;
 
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     private CartPresenter mCartPresenter;
 
     private ListView mCartListView;
+    private CoordinatorLayout mCoordinatorLayout;
 
     private ProductCartAdapter mProductCartAdapter;
 
@@ -49,6 +52,7 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
         mCartListView = (ListView) view.findViewById(R.id.cart_list_view);
         TextView mEmptyCartTextView = (TextView) view.findViewById(R.id.empty_cart_text_view);
         mCartListView.setEmptyView(mEmptyCartTextView);
+        mCoordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.cart_coordinator_layout);
         return view;
     }
 
@@ -75,6 +79,7 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     public void deleteItemFromCart(int position) {
         mProductsList.remove(position);
         mProductCartAdapter.notifyDataSetChanged();
+        Snackbar.make(mCoordinatorLayout, R.string.cart_remove_item_from_cart_snackbar , Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

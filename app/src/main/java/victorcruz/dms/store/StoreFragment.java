@@ -2,6 +2,8 @@ package victorcruz.dms.store;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
 
     private ListView mStoreListView;
     private TextView mEmptyStoreTextView;
+    private CoordinatorLayout mStoreCoordinatorLayout;
 
     private ArrayList<Product> mProductsList;
 
@@ -48,6 +51,7 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
         mEmptyStoreTextView = (TextView) view.findViewById(R.id.empty_store_text_view);
         mEmptyStoreTextView.setText(R.string.store_loading_text_view);
         mStoreListView.setEmptyView(mEmptyStoreTextView);
+        mStoreCoordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.store_coordinator_layout);
         return view;
     }
 
@@ -77,6 +81,7 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
     @Override
     public void addItemToCart(int position) {
         mPresenter.addItemToCart(mProductsList.get(position));
+        Snackbar.make(mStoreCoordinatorLayout, R.string.store_add_item_to_cart_snackbar , Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

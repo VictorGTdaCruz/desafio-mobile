@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:text="Não há transações" />
+        android:text="@string/transactions_empty_text_view" />
 
     <ListView
         android:id="@+id/transaction_list_view"

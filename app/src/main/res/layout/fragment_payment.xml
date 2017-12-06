@@ -45,7 +45,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="4dp"
-                android:hint="@string/cart_number"
+                android:hint="@string/payment_card_number"
                 android:inputType="number"
                 android:maxLength="16"/>
 
@@ -66,7 +66,7 @@
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="sans-serif"
-                android:hint="@string/cart_name"
+                android:hint="@string/payment_card_name"
                 android:inputType="text"/>
 
             <TextView
@@ -86,7 +86,7 @@
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="sans-serif"
-                android:hint="@string/cart_cvv"
+                android:hint="@string/payment_card_cvv"
                 android:inputType="number"
                 android:maxLength="3"/>
 
@@ -107,7 +107,7 @@
                 android:layout_marginRight="4dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="sans-serif"
-                android:hint="@string/cart_exp_date"
+                android:hint="@string/payment_card_exp_date"
                 android:inputType="date"
                 android:maxLength="5"/>
 

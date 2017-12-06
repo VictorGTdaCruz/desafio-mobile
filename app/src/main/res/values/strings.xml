@@ -12,6 +12,10 @@
     <!-- Feedback -->
     <string name="store_loading_text_view">Carregando loja…</string>
     <string name="store_error_text_view">Ops, houve um problema ao carregar a loja :(</string>
+    <string name="store_add_item_to_cart_snackbar">Item adicionado ao carrinho!</string>
+    <string name="cart_empty_text_view">Não há itens no carrinho</string>
+    <string name="cart_remove_item_from_cart_snackbar">Item removido do carrinho!</string>
+    <string name="transactions_empty_text_view">Não há transações</string>
 
     <!-- Dialog de pagamento -->
     <string name="payment_dialog_title"><s>Finalizar pagamento no valor de</s></string>
