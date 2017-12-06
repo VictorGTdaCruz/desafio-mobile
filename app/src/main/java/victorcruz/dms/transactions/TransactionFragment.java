@@ -16,6 +16,8 @@ import victorcruz.dms.data.Transaction;
 
 public class TransactionFragment extends Fragment implements TransactionContract.View{
 
+    private static TransactionFragment instance;
+
     private TransactionContract.Presenter mPresenter;
 
     private ListView mTransactionListView;
@@ -24,8 +26,10 @@ public class TransactionFragment extends Fragment implements TransactionContract
         // Required empty public constructor
     }
 
-    public static TransactionFragment newInstance() {
-        return new TransactionFragment();
+    public static TransactionFragment getInstance() {
+        if(instance == null)
+            instance = new TransactionFragment();
+        return instance;
     }
 
     @Override

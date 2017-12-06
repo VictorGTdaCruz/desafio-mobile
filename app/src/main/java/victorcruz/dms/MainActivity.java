@@ -42,10 +42,11 @@ public class MainActivity extends AppCompatActivity implements GetPriceInterface
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         mFragmentManager = getSupportFragmentManager();
-        mStoreFragment = StoreFragment.newInstance();
-        mCartFragment = CartFragment.newInstance();
-        mTransactionFragment = TransactionFragment.newInstance();
-        paymentDialogFragment = PaymentDialogFragment.newInstance();
+        mStoreFragment = StoreFragment.getInstance();
+
+        mCartFragment = CartFragment.getInstance();
+        mTransactionFragment = TransactionFragment.getInstance();
+        paymentDialogFragment = PaymentDialogFragment.getInstance();
         mFragmentManager.beginTransaction().add(R.id.fragment_container_layout, mStoreFragment).commit();
 
         mToolbarTitleTextView = (TextView) findViewById(R.id.toolbarTitleTextView);
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements GetPriceInterface
     }
 
     public void showPaymentDialog(View view){
-        if (mCartFragment.getPrice() > 0){
+        if (getPrice() > 0){
             paymentDialogFragment.show(mFragmentManager, null);
         } else {
             Toast.makeText(this, "Carrinho Vazio", Toast.LENGTH_SHORT).show();
@@ -83,26 +84,36 @@ public class MainActivity extends AppCompatActivity implements GetPriceInterface
                 case R.id.navigation_store:
                     mToolbarTitleTextView.setText(R.string.toolbar_store);
                     mToolbarButton.setVisibility(View.INVISIBLE);
-                    fragment = StoreFragment.newInstance();
+
+                    //mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mStoreFragment).commit();
+                    //return true;
+                    fragment = StoreFragment.getInstance();
                     break;
+
                 case R.id.navigation_cart:
                     mToolbarTitleTextView.setText(R.string.toolbar_cart);
                     mToolbarButton.setVisibility(View.VISIBLE);
-                    fragment = CartFragment.newInstance();
+
+                    //mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mCartFragment).commit();
+                    //return true;
+                    fragment = CartFragment.getInstance();
                     break;
+
                 case R.id.navigation_transactions:
                     mToolbarTitleTextView.setText(R.string.toolbar_transactions);
                     mToolbarButton.setVisibility(View.INVISIBLE);
-                    fragment = TransactionFragment.newInstance();
-                    break;
+
                     //mFragmentManager.beginTransaction().replace(R.id.fragment_container_layout, mTransactionFragment).commit();
                     //return true;
+                    fragment = TransactionFragment.getInstance();
+                    break;
+
             }
 
             transaction.replace(R.id.fragment_container_layout, fragment).commit();
             return true;
+            //return false;
         }
 
     };
-
 }

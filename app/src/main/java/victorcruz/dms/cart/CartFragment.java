@@ -19,6 +19,8 @@ import victorcruz.dms.data.Product;
 public class CartFragment extends Fragment implements CartContract.View, CartContract.CallbackDeleteItemFromCart,
         CartFragmentAndPaymentFragmentContract.GetPriceInterface, CartFragmentAndPaymentFragmentContract.ClearCartInterface {
 
+    private static CartFragment instance;
+
     private CartPresenter mCartPresenter;
 
     private ListView mCartListView;
@@ -32,10 +34,10 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
         // Required empty public constructor
     }
 
-    public static CartFragment newInstance() {
-        CartFragment fragment;
-        fragment = new CartFragment();
-        return fragment;
+    public static CartFragment getInstance() {
+        if(instance == null)
+            instance = new CartFragment();
+        return instance;
     }
 
     @Override

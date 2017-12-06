@@ -20,6 +20,8 @@ import victorcruz.dms.CartFragmentAndPaymentFragmentContract.GetPriceInterface;
 
 public class PaymentDialogFragment extends DialogFragment implements PaymentContract.View{
 
+    private static PaymentDialogFragment instance;
+
     private EditText cardNumberEditText, cardNameEditText, cardCVVEditText, cardExpDateEditText;
 
     private GetPriceInterface mGetPriceInterface;
@@ -27,8 +29,10 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
 
     private PaymentPresenter mPaymentPresenter;
 
-    public static PaymentDialogFragment newInstance() {
-        return new PaymentDialogFragment();
+    public static PaymentDialogFragment getInstance() {
+        if(instance == null)
+            instance = new PaymentDialogFragment();
+        return instance;
     }
 
     @Override
@@ -63,7 +67,7 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
         cardCVVEditText = (EditText)  view.findViewById(R.id.cardCVVEditText);
         cardExpDateEditText = (EditText)  view.findViewById(R.id.cardExpDateEditText);
 
-        builder.setMessage(R.string.payment_confirm)
+        builder.setMessage(R.string.payment_dialog_title)
                 .setView(view)
                 .setPositiveButton(R.string.payment_confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

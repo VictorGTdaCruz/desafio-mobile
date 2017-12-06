@@ -25,13 +25,10 @@
             android:id="@+id/toolbar_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/ic_account_balance_wallet_black_24dp"
             android:onClick="showPaymentDialog"
-            android:text="FINALIZAR PAGAMENTO"
             android:visibility="invisible" />
 
     </LinearLayout>
 
 </android.support.v7.widget.Toolbar>
-
-
-
