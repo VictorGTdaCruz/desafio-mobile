@@ -10,25 +10,31 @@
     <string name="toolbar_transactions">Transações</string>
 
     <!-- Feedback -->
-    <string name="store_loading_text_view">Carregando loja…</string>
-    <string name="store_error_text_view">Ops, houve um problema ao carregar a loja :(</string>
-    <string name="store_add_item_to_cart_snackbar">Item adicionado ao carrinho!</string>
-    <string name="cart_empty_text_view">Não há itens no carrinho</string>
-    <string name="cart_remove_item_from_cart_snackbar">Item removido do carrinho!</string>
-    <string name="transactions_empty_text_view">Não há transações</string>
+    <string name="store_loading">Carregando loja…</string>
+    <string name="store_error">Ops, houve um problema ao carregar a loja :(</string>
+    <string name="store_added_item_to_cart">Item adicionado ao carrinho!</string>
+    <string name="cart_empty">Não há itens no carrinho</string>
+    <string name="cart_removed_item_from_cart">Item removido do carrinho!</string>
+    <string name="transactions_empty">Não há transações</string>
 
     <!-- Store item -->
     <string name="store_item_button"><s>ADICIONAR AO CARRINHO</s></string>
+    <string name="store_item_title"><s>Título</s></string>
+    <string name="store_item_seller"><s>Vendedor</s></string>
+    <string name="store_item_price"><s>Preço</s></string>
 
     <!-- Cart item -->
     <string name="cart_item_button"><s>REMOVER DO CARRINHO</s></string>
+    <string name="cart_item_title"><s>Título</s></string>
+    <string name="cart_item_seller"><s>Vendedor</s></string>
+    <string name="cart_item_price"><s>Preço</s></string>
 
     <!-- Transaction item -->
-    <string name="transaction_value_text_view"><s>valor</s></string>
-    <string name="transaction_card_name_text_view"><s>nome</s></string>
-    <string name="transaction_card_number_text_view"><s>número do cartão</s></string>
-    <string name="transaction_hour_text_view"><s>hora</s></string>
-    <string name="transaction_date_text_view"><s>data</s></string>
+    <string name="transaction_value"><s>valor</s></string>
+    <string name="transaction_card_name"><s>nome</s></string>
+    <string name="transaction_card_number"><s>número do cartão</s></string>
+    <string name="transaction_hour"><s>hora</s></string>
+    <string name="transaction_date"><s>data</s></string>
 
     <!-- Payment Dialog -->
     <string name="payment_dialog_title"><s>Finalizar pagamento no valor de</s></string>

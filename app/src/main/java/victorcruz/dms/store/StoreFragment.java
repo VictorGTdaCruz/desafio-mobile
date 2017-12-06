@@ -49,7 +49,7 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
         View view = inflater.inflate(R.layout.fragment_store, container, false);
         mStoreListView = (ListView) view.findViewById(R.id.store_list_view);
         mEmptyStoreTextView = (TextView) view.findViewById(R.id.empty_store_text_view);
-        mEmptyStoreTextView.setText(R.string.store_loading_text_view);
+        mEmptyStoreTextView.setText(R.string.store_loading);
         mStoreListView.setEmptyView(mEmptyStoreTextView);
         mStoreCoordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.store_coordinator_layout);
         return view;
@@ -81,12 +81,12 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
     @Override
     public void addItemToCart(int position) {
         mPresenter.addItemToCart(mProductsList.get(position));
-        Snackbar.make(mStoreCoordinatorLayout, R.string.store_add_item_to_cart_snackbar , Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(mStoreCoordinatorLayout, R.string.store_added_item_to_cart, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public void warningJsonError(){
-        mEmptyStoreTextView.setText(R.string.store_error_text_view);
+        mEmptyStoreTextView.setText(R.string.store_error);
     }
 
 }

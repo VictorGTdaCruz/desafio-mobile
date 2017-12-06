@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorgrey2"
@@ -34,14 +35,16 @@
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:textColor="@color/colorblue"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:text="@string/store_item_title" />
 
             <TextView
                 android:id="@+id/seller"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorgrey4"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:text="@string/store_item_seller" />
 
             <TextView
                 android:id="@+id/price"
@@ -49,7 +52,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:textColor="@color/colorgrey5"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                tools:text="@string/store_item_price" />
 
             <Button
                 android:id="@+id/add_to_cart_button"

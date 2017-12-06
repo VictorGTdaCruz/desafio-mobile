@@ -33,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
+                android:text="@string/cart_item_title"
                 android:textColor="@color/colorblue"
                 android:textSize="18sp" />
 
@@ -40,6 +41,7 @@
                 android:id="@+id/seller"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/cart_item_seller"
                 android:textColor="@color/colorgrey4"
                 android:textSize="12sp" />
 
@@ -48,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
+                android:text="@string/cart_item_price"
                 android:textColor="@color/colorgrey5"
                 android:textSize="15sp" />
 

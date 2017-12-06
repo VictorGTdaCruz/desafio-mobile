@@ -79,7 +79,7 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     public void deleteItemFromCart(int position) {
         mProductsList.remove(position);
         mProductCartAdapter.notifyDataSetChanged();
-        Snackbar.make(mCoordinatorLayout, R.string.cart_remove_item_from_cart_snackbar , Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(mCoordinatorLayout, R.string.cart_removed_item_from_cart, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

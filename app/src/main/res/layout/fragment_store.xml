@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:text="@string/store_loading_text_view" />
+            android:text="@string/store_loading" />
 
         <ListView
             android:id="@+id/store_list_view"
