@@ -17,7 +17,20 @@
     <string name="cart_remove_item_from_cart_snackbar">Item removido do carrinho!</string>
     <string name="transactions_empty_text_view">Não há transações</string>
 
-    <!-- Dialog de pagamento -->
+    <!-- Store item -->
+    <string name="store_item_button"><s>ADICIONAR AO CARRINHO</s></string>
+
+    <!-- Cart item -->
+    <string name="cart_item_button"><s>REMOVER DO CARRINHO</s></string>
+
+    <!-- Transaction item -->
+    <string name="transaction_value_text_view"><s>valor</s></string>
+    <string name="transaction_card_name_text_view"><s>nome</s></string>
+    <string name="transaction_card_number_text_view"><s>número do cartão</s></string>
+    <string name="transaction_hour_text_view"><s>hora</s></string>
+    <string name="transaction_date_text_view"><s>data</s></string>
+
+    <!-- Payment Dialog -->
     <string name="payment_dialog_title"><s>Finalizar pagamento no valor de</s></string>
     <string name="payment_card_number">XXXX XXXX XXXX XXXX</string>
     <string name="payment_card_name">Nome</string>
