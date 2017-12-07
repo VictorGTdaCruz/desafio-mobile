@@ -9,10 +9,10 @@
     <string name="tag_cart_fragment">cart_tag</string>
     <string name="tag_transactions_fragment">transactions_tag</string>
 
-    <!-- Toolbar -->
-    <string name="toolbar_store">Loja</string>
-    <string name="toolbar_cart">Carrinho</string>
-    <string name="toolbar_transactions">Transações</string>
+    <!-- Actionbar -->
+    <string name="actionbar_store">Loja</string>
+    <string name="actionbar_cart">Carrinho</string>
+    <string name="actionbar_transactions">Transações</string>
 
     <!-- Feedback -->
     <string name="store_loading">Carregando loja…</string>

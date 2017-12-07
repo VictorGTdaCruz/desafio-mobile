@@ -1,15 +1,26 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="victorcruz.dms.cart.CartFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/cart_coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/payment_dialog_floating_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:backgroundTint="@color/colorActionbar"
+            app:srcCompat="@drawable/ic_wallet" />
 
         <TextView
             android:id="@+id/empty_cart_text_view"
@@ -21,7 +32,9 @@
         <ListView
             android:id="@+id/cart_list_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" >
+
+        </ListView>
     </android.support.design.widget.CoordinatorLayout>
 
 </FrameLayout>

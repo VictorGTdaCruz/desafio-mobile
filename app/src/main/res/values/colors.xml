@@ -12,6 +12,6 @@
     <color name="colorgrey3">#888888</color>
     <color name="colorgrey2">#b1b1b1</color>
     <color name="colorgrey1">#e0e0e0</color>
-    <color name="colorToolbar">#2c3039</color>
+    <color name="colorActionbar">#2c3039</color>
 
 </resources>

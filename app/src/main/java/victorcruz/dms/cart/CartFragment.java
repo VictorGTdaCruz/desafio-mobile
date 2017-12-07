@@ -1,7 +1,9 @@
 package victorcruz.dms.cart;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,15 +15,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import victorcruz.dms.CartFragmentAndPaymentFragmentContract;
+import victorcruz.dms.FloatingActionButtonInterface;
 import victorcruz.dms.R;
 import victorcruz.dms.data.Product;
 
 public class CartFragment extends Fragment implements CartContract.View, CartContract.CallbackDeleteItemFromCart,
         CartFragmentAndPaymentFragmentContract.GetPriceInterface, CartFragmentAndPaymentFragmentContract.ClearCartInterface {
 
-    private static CartFragment instance;
-
     private CartPresenter mCartPresenter;
+
+    private FloatingActionButtonInterface mFloatingActionButtonInterface;
 
     private ListView mCartListView;
     private CoordinatorLayout mCoordinatorLayout;
@@ -39,6 +42,12 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mFloatingActionButtonInterface = (FloatingActionButtonInterface) context;
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mCartPresenter = new CartPresenter(this);
@@ -53,6 +62,13 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
         TextView mEmptyCartTextView = (TextView) view.findViewById(R.id.empty_cart_text_view);
         mCartListView.setEmptyView(mEmptyCartTextView);
         mCoordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.cart_coordinator_layout);
+        FloatingActionButton floatingActionButton = (FloatingActionButton) view.findViewById(R.id.payment_dialog_floating_button);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPaymentDialog();
+            }
+        });
         return view;
     }
 
@@ -95,4 +111,13 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
         }
         mProductCartAdapter.notifyDataSetChanged();
     }
+
+    public void showPaymentDialog(){
+        if (getPrice() > 0){
+            mFloatingActionButtonInterface.showPaymentDialog();
+        } else {
+            Snackbar.make(mCoordinatorLayout, R.string.cart_empty, Snackbar.LENGTH_SHORT).show();
+        }
+    }
+
 }

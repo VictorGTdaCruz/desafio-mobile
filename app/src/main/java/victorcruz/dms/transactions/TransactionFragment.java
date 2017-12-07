@@ -16,8 +16,6 @@ import victorcruz.dms.data.Transaction;
 
 public class TransactionFragment extends Fragment implements TransactionContract.View{
 
-    private static TransactionFragment instance;
-
     private TransactionContract.Presenter mPresenter;
 
     private ListView mTransactionListView;
