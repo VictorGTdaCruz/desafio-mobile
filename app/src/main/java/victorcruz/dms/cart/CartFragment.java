@@ -34,10 +34,8 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
         // Required empty public constructor
     }
 
-    public static CartFragment getInstance() {
-        if(instance == null)
-            instance = new CartFragment();
-        return instance;
+    public static CartFragment newInstance() {
+        return new CartFragment();
     }
 
     @Override

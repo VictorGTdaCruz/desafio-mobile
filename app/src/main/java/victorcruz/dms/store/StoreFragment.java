@@ -18,8 +18,6 @@ import victorcruz.dms.data.Product;
 
 public class StoreFragment extends Fragment implements StoreContract.View, StoreContract.CallbackAddItemToCart {
 
-    private static StoreFragment instance;
-
     private StoreContract.Presenter mPresenter;
 
     private ProductStoreAdapter mProductStoreAdapter;
@@ -34,10 +32,8 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
         // Required empty public constructor
     }
 
-    public static StoreFragment getInstance() {
-        if(instance == null)
-            instance = new StoreFragment();
-        return instance;
+    public static StoreFragment newInstance() {
+        return new StoreFragment();
     }
 
     @Override

@@ -26,10 +26,8 @@ public class TransactionFragment extends Fragment implements TransactionContract
         // Required empty public constructor
     }
 
-    public static TransactionFragment getInstance() {
-        if(instance == null)
-            instance = new TransactionFragment();
-        return instance;
+    public static TransactionFragment newInstance() {
+        return new TransactionFragment();
     }
 
     @Override

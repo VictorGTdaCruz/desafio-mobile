@@ -20,8 +20,6 @@ import victorcruz.dms.CartFragmentAndPaymentFragmentContract.GetPriceInterface;
 
 public class PaymentDialogFragment extends DialogFragment implements PaymentContract.View{
 
-    private static PaymentDialogFragment instance;
-
     private EditText cardNumberEditText, cardNameEditText, cardCVVEditText, cardExpDateEditText;
 
     private GetPriceInterface mGetPriceInterface;
@@ -29,10 +27,8 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
 
     private PaymentPresenter mPaymentPresenter;
 
-    public static PaymentDialogFragment getInstance() {
-        if(instance == null)
-            instance = new PaymentDialogFragment();
-        return instance;
+    public static PaymentDialogFragment newInstance() {
+        return new PaymentDialogFragment();
     }
 
     @Override
