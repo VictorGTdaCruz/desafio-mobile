@@ -20,16 +20,20 @@ import victorcruz.dms.util.SellerFormatter;
 
 public class ProductStoreAdapter extends BaseAdapter {
 
-    private final ArrayList<Product> mProductsList;
+    private ArrayList<Product> mProductsList = new ArrayList<>();
 
     private StoreContract.CallbackAddItemToCart callbackAddItemToCart;
 
     private Context mContext;
 
-    ProductStoreAdapter(Context mContext, ArrayList<Product> mProductsList, StoreContract.CallbackAddItemToCart callbackAddItemToCart){
+    ProductStoreAdapter(Context mContext, StoreContract.CallbackAddItemToCart callbackAddItemToCart){
         this.mContext = mContext;
-        this.mProductsList = mProductsList;
+        //this.mProductsList = mProductsList;
         this.callbackAddItemToCart = callbackAddItemToCart;
+    }
+
+    public void setItems(ArrayList mProductsList){
+        this.mProductsList = mProductsList;
     }
 
     @Override

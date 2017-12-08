@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,7 +23,6 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
 
     private ProductStoreAdapter mProductStoreAdapter;
 
-    private ListView mStoreListView;
     private TextView mEmptyStoreTextView;
     private CoordinatorLayout mStoreCoordinatorLayout;
 
@@ -46,11 +46,21 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_store, container, false);
-        mStoreListView = (ListView) view.findViewById(R.id.store_list_view);
-        mEmptyStoreTextView = (TextView) view.findViewById(R.id.empty_store_text_view);
-        mEmptyStoreTextView.setText(R.string.store_loading);
-        mStoreListView.setEmptyView(mEmptyStoreTextView);
+        View viewEmpty = inflater.inflate(R.layout.list_empty,container, false);
+
+        ListView mStoreListView = (ListView) view.findViewById(R.id.store_list_view);
+        getActivity().addContentView(viewEmpty, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+        mStoreListView.setEmptyView(viewEmpty);
+        mProductStoreAdapter = new ProductStoreAdapter(getContext(), StoreFragment.this);
+
+        //mEmptyStoreTextView = (TextView) view.findViewById(R.id.empty_store_text_view);
+        //mEmptyStoreTextView.setText(R.string.store_loading);
+        //mStoreListView.setEmptyView(mEmptyStoreTextView);
+
+        mStoreListView.setAdapter(mProductStoreAdapter);
+
         mStoreCoordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.store_coordinator_layout);
         return view;
     }
@@ -66,9 +76,11 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
         getActivity().runOnUiThread(new Runnable() {
                 @Override
             public void run() {
-                mProductStoreAdapter = new ProductStoreAdapter(getContext(), mProductsList, StoreFragment.this);
+                //mProductStoreAdapter = new ProductStoreAdapter(getContext(), StoreFragment.this);
                 StoreFragment.this.setmProductsList(mProductsList);
-                mStoreListView.setAdapter(mProductStoreAdapter);
+                //mStoreListView.setAdapter(mProductStoreAdapter);
+                StoreFragment.this.mProductStoreAdapter.setItems(mProductsList);
+                mProductStoreAdapter.notifyDataSetChanged();
                 }
             }
         );
