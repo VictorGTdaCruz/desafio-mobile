@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorblack"
     tools:context="victorcruz.dms.cart.CartFragment">
 
     <android.support.design.widget.CoordinatorLayout
@@ -27,12 +28,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:text="@string/cart_empty" />
+            android:text="@string/cart_empty"
+            android:textColor="@color/colorwhite" />
 
         <ListView
             android:id="@+id/cart_list_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
         </ListView>
     </android.support.design.widget.CoordinatorLayout>

@@ -74,16 +74,15 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
     @Override
     public void setItens(final ArrayList<Product> mProductsList) {
         getActivity().runOnUiThread(new Runnable() {
-                @Override
-            public void run() {
+                                        @Override
+                                        public void run() {
                 //mProductStoreAdapter = new ProductStoreAdapter(getContext(), StoreFragment.this);
                 StoreFragment.this.setmProductsList(mProductsList);
                 //mStoreListView.setAdapter(mProductStoreAdapter);
                 StoreFragment.this.mProductStoreAdapter.setItems(mProductsList);
                 mProductStoreAdapter.notifyDataSetChanged();
-                }
             }
-        );
+        });
     }
 
     public void setmProductsList(ArrayList<Product> mProductsList){

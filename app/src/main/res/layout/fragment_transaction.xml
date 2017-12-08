@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorblack"
     tools:context="victorcruz.dms.transactions.TransactionFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:text="@string/transactions_empty" />
+        android:text="@string/transactions_empty"
+        android:textColor="@color/colorwhite" />
 
     <ListView
         android:id="@+id/transaction_list_view"

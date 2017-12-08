@@ -46,8 +46,7 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="7dp"
+            android:layout_margin="15dp"
             android:textColor="@color/colorgrey5"
             android:textSize="30sp"
             tools:text="@string/store_item_price" />

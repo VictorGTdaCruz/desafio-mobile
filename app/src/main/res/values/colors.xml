@@ -10,8 +10,15 @@
     <color name="colorgrey5">#111111</color>
     <color name="colorgrey4">#424242</color>
     <color name="colorgrey3">#888888</color>
-    <color name="colorgrey2">#b1b1b1</color>
-    <color name="colorgrey1">#e0e0e0</color>
-    <color name="colorActionbar">#2c3039</color>
+    <color name="colorgrey2">#b1b1b1</color>b1b1b1
+    <color name="colorgrey1">#e0e0e0</color>8fe3ad
+    <color name="colorActionbar">#007a33</color>2c3039
+
+    <color name="colorstone">#6495c93c</color>
+
+    <!--
+        #009639
+
+    -->
 
 </resources>
