@@ -43,11 +43,15 @@
 
     <!-- Payment Dialog -->
     <string name="payment_dialog_title"><s>Finalizar pagamento no valor de</s></string>
-    <string name="payment_card_number">XXXX XXXX XXXX XXXX</string>
-    <string name="payment_card_name">Nome</string>
-    <string name="payment_card_exp_date">Vencimento</string>
-    <string name="payment_card_cvv">CVV</string>
     <string name="payment_value">Valor</string>
+    <string name="payment_card_number">Número do cartão (16 digitos)</string>
+    <string name="payment_card_number_tip">XXXX XXXX XXXX XXXX</string>
+    <string name="payment_card_name">Nome Completo</string>
+    <string name="payment_card_name_tip">nome</string>
+    <string name="payment_card_cvv">CVV (código na parte traseira)</string>
+    <string name="payment_card_cvv_tip">cvv</string>
+    <string name="payment_card_exp_date">Vencimento do cartão</string>
+    <string name="payment_card_exp_date_tip">vencimento</string>
     <string name="payment_confirm">Finalizar</string>
     <string name="payment_cancel">Cancelar</string>
 </resources>

@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_marginStart="10dp"
             android:paddingTop="20dp"
             android:scaleType="center"
-            android:text="Número do cartão (16 digitos)" />
+            android:text="@string/payment_card_number" />
 
         <EditText
             android:id="@+id/cardNumberEditText"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:hint="@string/payment_card_number"
+            android:hint="@string/payment_card_number_tip"
             android:inputType="number"
             android:maxLength="16" />
 
@@ -48,7 +48,7 @@
             android:layout_marginStart="10dp"
             android:paddingTop="20dp"
             android:scaleType="center"
-            android:text="Nome completo" />
+            android:text="@string/payment_card_name" />
 
         <EditText
             android:id="@+id/cardNameEditText"
@@ -57,7 +57,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
             android:fontFamily="sans-serif"
-            android:hint="@string/payment_card_name"
+            android:hint="@string/payment_card_name_tip"
             android:inputType="text" />
 
         <TextView
@@ -67,7 +67,7 @@
             android:layout_marginStart="10dp"
             android:paddingTop="20dp"
             android:scaleType="center"
-            android:text="CVV (Código na parte traseira)" />
+            android:text="@string/payment_card_cvv" />
 
         <EditText
             android:id="@+id/cardCVVEditText"
@@ -76,7 +76,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
             android:fontFamily="sans-serif"
-            android:hint="@string/payment_card_cvv"
+            android:hint="@string/payment_card_cvv_tip"
             android:inputType="number"
             android:maxLength="3" />
 
@@ -87,7 +87,7 @@
             android:layout_marginStart="10dp"
             android:paddingTop="20dp"
             android:scaleType="center"
-            android:text="Vencimento do cartao" />
+            android:text="@string/payment_card_exp_date" />
 
         <EditText
             android:id="@+id/cardExpDateEditText"
@@ -96,7 +96,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
             android:fontFamily="sans-serif"
-            android:hint="@string/payment_card_exp_date"
+            android:hint="@string/payment_card_exp_date_tip"
             android:inputType="date"
             android:maxLength="5" />
 
