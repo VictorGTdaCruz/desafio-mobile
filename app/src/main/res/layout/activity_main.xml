@@ -25,6 +25,6 @@
         android:layout_gravity="bottom"
         android:background="@color/colorActionbar"
         app:menu="@menu/navigation"
-        app:itemIconTint="@color/colorwhite"/>
+        app:itemIconTint="@drawable/navigation_selector" />
 
 </LinearLayout>
