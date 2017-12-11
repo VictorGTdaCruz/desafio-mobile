@@ -66,6 +66,7 @@ public class CartPresenter implements CartContract.Presenter{
     @Override
     public int getCartPrice(ArrayList<Product> mProductsList) {
         int value = 0;
+        if (mProductsList == null) return 0;
         for (int i = 0; i < mProductsList.size(); i++){
             value = value + mProductsList.get(i).getPrice();
         }

@@ -20,12 +20,14 @@ import victorcruz.dms.CartFragmentAndPaymentFragmentContract.GetPriceInterface;
 
 public class PaymentDialogFragment extends DialogFragment implements PaymentContract.View{
 
-    private EditText cardNumberEditText, cardNameEditText, cardCVVEditText, cardExpDateEditText;
+    private PaymentPresenter mPaymentPresenter;
 
     private GetPriceInterface mGetPriceInterface;
     private ClearCartInterface mClearCartInterface;
 
-    private PaymentPresenter mPaymentPresenter;
+    private EditText cardNumberEditText, cardNameEditText, cardCVVEditText, cardExpDateEditText;
+
+    private int mValue;
 
     public static PaymentDialogFragment newInstance() {
         return new PaymentDialogFragment();
@@ -53,10 +55,13 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.fragment_payment, null);
 
-        // faz o valor no topo do fragmento
         TextView mValue_text_view = (TextView) view.findViewById(R.id.value_text_view);
-        final int value = mGetPriceInterface.getPrice();
-        String title = "Finalizar pagamento de " + CurrencyFormatter.formatPrice(value);
+        if (savedInstanceState != null){
+            mValue = savedInstanceState.getInt("savedvalue");
+        } else {
+            mValue = mGetPriceInterface.getPrice();
+        }
+        String title = "Finalizar pagamento de " + CurrencyFormatter.formatPrice(mValue);
         mValue_text_view.setText(title);
 
         cardNumberEditText = (EditText)  view.findViewById(R.id.cardNumberEditText);
@@ -72,7 +77,7 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
                         String mCardName = cardNameEditText.getText().toString();
                         String mCVV = cardCVVEditText.getText().toString();
                         String mExpDate = cardExpDateEditText.getText().toString();
-                        mPaymentPresenter.sendPaymentInfoString(value, mCardNumber, mCardName, mCVV, mExpDate);
+                        mPaymentPresenter.sendPaymentInfoString(mValue, mCardNumber, mCardName, mCVV, mExpDate);
                         mClearCartInterface.clearCart();
 
                     }
@@ -84,5 +89,11 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
                 });
 
         return builder.create();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putInt("savedvalue", mValue);
+        super.onSaveInstanceState(outState);
     }
 }
