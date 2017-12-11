@@ -27,12 +27,25 @@ public class MainActivity extends AppCompatActivity implements GetPriceInterface
         setContentView(R.layout.activity_main);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(R.string.actionbar_store);
-        }
+
         mFragmentManager = getSupportFragmentManager();
-        StoreFragment mStoreFragment = StoreFragment.newInstance();
-        mFragmentManager.beginTransaction().add(R.id.fragment_container_layout, mStoreFragment, "store_tag").commit();
+
+        if (mFragmentManager.findFragmentByTag("cart_tag") != null){
+            mFragmentManager.beginTransaction().add(R.id.fragment_container_layout, CartFragment.newInstance(), "store_tag").commit();
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle(R.string.actionbar_cart);
+            }
+        } else if (mFragmentManager.findFragmentByTag("transactions_tag") != null){
+            mFragmentManager.beginTransaction().add(R.id.fragment_container_layout, TransactionFragment.newInstance(), "store_tag").commit();
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle(R.string.actionbar_transactions);
+            }
+        } else {
+            mFragmentManager.beginTransaction().add(R.id.fragment_container_layout, StoreFragment.newInstance(), "store_tag").commit();
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle(R.string.actionbar_store);
+            }
+        }
     }
 
     @Override

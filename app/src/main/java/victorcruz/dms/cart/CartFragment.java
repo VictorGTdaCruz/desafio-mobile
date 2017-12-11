@@ -120,4 +120,9 @@ public class CartFragment extends Fragment implements CartContract.View, CartCon
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+
+        super.onSaveInstanceState(outState);
+    }
 }
