@@ -101,7 +101,12 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
     @Override
     public void warningJsonError(){
         if (getActivity() != null) {
-            mEmptyStoreTextView.setText(R.string.store_error);
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mEmptyStoreTextView.setText(R.string.store_error);
+                }
+            });
         }
     }
 }

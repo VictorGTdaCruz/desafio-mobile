@@ -56,15 +56,15 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
         // faz o valor no topo do fragmento
         TextView mValue_text_view = (TextView) view.findViewById(R.id.value_text_view);
         final int value = mGetPriceInterface.getPrice();
-        mValue_text_view.setText(CurrencyFormatter.formatPrice(value));
+        String title = "Finalizar pagamento de " + CurrencyFormatter.formatPrice(value);
+        mValue_text_view.setText(title);
 
         cardNumberEditText = (EditText)  view.findViewById(R.id.cardNumberEditText);
         cardNameEditText = (EditText)  view.findViewById(R.id.cardNameEditText);
         cardCVVEditText = (EditText)  view.findViewById(R.id.cardCVVEditText);
         cardExpDateEditText = (EditText)  view.findViewById(R.id.cardExpDateEditText);
 
-        builder.setMessage(R.string.payment_dialog_title)
-                .setView(view)
+        builder.setView(view)
                 .setPositiveButton(R.string.payment_confirm, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
