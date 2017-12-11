@@ -14,8 +14,9 @@
             android:id="@+id/empty_store_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_gravity="center"
             android:text="@string/store_loading"
+            android:textColor="@color/colorwhite"
             android:visibility="gone" />
 
         <ListView

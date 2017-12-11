@@ -3,63 +3,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorgrey2"
+    android:background="@color/colorblack"
+    android:baselineAligned="false"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="16dp">
-
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:src="@mipmap/ic_launcher" />
+    android:paddingBottom="1dp"
+    android:paddingTop="1dp">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorgrey5"
+        android:orientation="horizontal"
+        android:padding="6dp">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/colorblue"
-            android:textSize="24sp"
-            tools:text="@string/store_item_title" />
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-        <TextView
-            android:id="@+id/seller"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/colorActionbar"
+                android:textSize="24sp"
+                tools:text="@string/store_item_title" />
+
+            <TextView
+                android:id="@+id/seller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/colorgrey3"
+                android:textSize="14sp"
+                tools:text="@string/store_item_seller" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:textColor="@color/colorwhite"
+                android:textSize="18sp"
+                tools:text="@string/store_item_price" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/add_to_cart_button"
+            android:layout_width="125dp"
+            android:layout_height="75dp"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/colorgrey4"
-            android:textSize="14sp"
-            tools:text="@string/store_item_seller" />
-
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:textColor="@color/colorgrey5"
-            android:textSize="18sp"
-            tools:text="@string/store_item_price" />
-
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/colorgrey2"
+            android:text="@string/store_item_button" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/add_to_cart_button"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:text="@string/store_item_button" />
-
 </LinearLayout>

@@ -67,9 +67,6 @@
                 android:backgroundTint="@color/colorgrey2"
                 android:text="@string/store_item_button" />
 
-
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>

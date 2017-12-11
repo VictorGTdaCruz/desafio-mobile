@@ -7,7 +7,8 @@
     android:gravity="center"
     android:orientation="horizontal"
     android:paddingBottom="1dp"
-    android:paddingTop="1dp" android:baselineAligned="false">
+    android:paddingTop="1dp"
+    android:baselineAligned="false">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -67,9 +68,6 @@
                 android:backgroundTint="@color/colorgrey2"
                 android:text="@string/cart_item_button" />
 
-
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>

@@ -48,18 +48,19 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_store, container, false);
-        View viewEmpty = inflater.inflate(R.layout.list_empty,container, false);
+        //View viewEmpty = inflater.inflate(R.layout.list_empty,container, false);
 
         ListView mStoreListView = (ListView) view.findViewById(R.id.store_list_view);
-        getActivity().addContentView(viewEmpty, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-        mStoreListView.setEmptyView(viewEmpty);
+        //getActivity().addContentView(viewEmpty, new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
         mProductStoreAdapter = new ProductStoreAdapter(getContext(), StoreFragment.this);
 
-        //mEmptyStoreTextView = (TextView) view.findViewById(R.id.empty_store_text_view);
-        //mEmptyStoreTextView.setText(R.string.store_loading);
-        //mStoreListView.setEmptyView(mEmptyStoreTextView);
+        mEmptyStoreTextView = (TextView) view.findViewById(R.id.empty_store_text_view);
+        mEmptyStoreTextView.setText(R.string.store_loading);
 
         mStoreListView.setAdapter(mProductStoreAdapter);
+        mStoreListView.setEmptyView(mEmptyStoreTextView);
+
+        //mStoreListView.setEmptyView(viewEmpty);
 
         mStoreCoordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.store_coordinator_layout);
         return view;
@@ -73,16 +74,18 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
 
     @Override
     public void setItens(final ArrayList<Product> mProductsList) {
-        getActivity().runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                //mProductStoreAdapter = new ProductStoreAdapter(getContext(), StoreFragment.this);
-                StoreFragment.this.setmProductsList(mProductsList);
-                //mStoreListView.setAdapter(mProductStoreAdapter);
-                StoreFragment.this.mProductStoreAdapter.setItems(mProductsList);
-                mProductStoreAdapter.notifyDataSetChanged();
-            }
-        });
+        if (getActivity() != null) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    //mProductStoreAdapter = new ProductStoreAdapter(getContext(), StoreFragment.this);
+                    StoreFragment.this.setmProductsList(mProductsList);
+                    //mStoreListView.setAdapter(mProductStoreAdapter);
+                    StoreFragment.this.mProductStoreAdapter.setItems(mProductsList);
+                    mProductStoreAdapter.notifyDataSetChanged();
+                }
+            });
+        }
     }
 
     public void setmProductsList(ArrayList<Product> mProductsList){
@@ -97,7 +100,8 @@ public class StoreFragment extends Fragment implements StoreContract.View, Store
 
     @Override
     public void warningJsonError(){
-        mEmptyStoreTextView.setText(R.string.store_error);
+        if (getActivity() != null) {
+            mEmptyStoreTextView.setText(R.string.store_error);
+        }
     }
-
 }
