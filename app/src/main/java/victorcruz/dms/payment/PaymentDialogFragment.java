@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import victorcruz.dms.R;
 import victorcruz.dms.util.CurrencyFormatter;
@@ -21,6 +22,8 @@ import victorcruz.dms.CartFragmentAndPaymentFragmentContract.GetPriceInterface;
 public class PaymentDialogFragment extends DialogFragment implements PaymentContract.View{
 
     private PaymentPresenter mPaymentPresenter;
+
+    private Context mContext;
 
     private GetPriceInterface mGetPriceInterface;
     private ClearCartInterface mClearCartInterface;
@@ -38,6 +41,7 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
         super.onAttach(context);
         mGetPriceInterface = (GetPriceInterface) context;
         mClearCartInterface = (ClearCartInterface) context;
+        mContext = context;
     }
 
     @Override
@@ -77,8 +81,14 @@ public class PaymentDialogFragment extends DialogFragment implements PaymentCont
                         String mCardName = cardNameEditText.getText().toString();
                         String mCVV = cardCVVEditText.getText().toString();
                         String mExpDate = cardExpDateEditText.getText().toString();
-                        mPaymentPresenter.sendPaymentInfoString(mValue, mCardNumber, mCardName, mCVV, mExpDate);
-                        mClearCartInterface.clearCart();
+
+                        if (mCardNumber.length() == 16 && mCardName.length() > 0 && mCVV.length() == 3 && mExpDate.length() == 5 && mExpDate.substring(2,3).equals("/")){
+                            mPaymentPresenter.sendPaymentInfoString(mValue, mCardNumber, mCardName, mCVV, mExpDate);
+                            mClearCartInterface.clearCart();
+                            Toast.makeText(mContext, "Compra realizada com sucesso!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(mContext, "Dados rejeitados!", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 })
