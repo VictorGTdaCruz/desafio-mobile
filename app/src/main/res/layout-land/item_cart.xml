@@ -70,6 +70,7 @@
             android:layout_width="125dp"
             android:layout_height="75dp"
             android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
             android:backgroundTint="@color/colorgrey2"
             android:text="@string/cart_item_button" />
 
