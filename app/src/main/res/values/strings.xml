@@ -4,6 +4,11 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <!-- Bottom Navigation View icon text -->
+    <string name="store_bottom_nav_view">Loja</string>
+    <string name="cart_bottom_nav_view">Carrinho</string>
+    <string name="transactions_bottom_nav_view">Transações</string>
+
     <!-- Fragment tags -->
     <string name="tag_store_fragment">store_tag</string>
     <string name="tag_cart_fragment">cart_tag</string>

@@ -3,16 +3,16 @@
     <item
         android:id="@+id/navigation_store"
         android:icon="@drawable/ic_shop_black_24dp"
-        android:title=""/>
+        android:title="@string/store_bottom_nav_view"/>
 
     <item
         android:id="@+id/navigation_cart"
         android:icon="@drawable/ic_shopping_cart_24dp"
-        android:title=""/>
+        android:title="@string/cart_bottom_nav_view"/>
 
     <item
         android:id="@+id/navigation_transactions"
         android:icon="@drawable/ic_money_24dp"
-        android:title=""/>
+        android:title="@string/transactions_bottom_nav_view"/>
 
 </menu>
